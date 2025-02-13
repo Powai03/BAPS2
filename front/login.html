@@ -3,26 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Connexion</title>
 </head>
+<header>
+    <nav class="navbar">
+        <div class="logo-placeholder">
+            <a href="#"><img src="#" alt="logo"></a>
+        </div>
+    </nav>
+</header>
 <body>
-    <form>
-        <h1>Se connecter</h1>
-        <div class="input-box">
-            <input type="email" placeholder="Email" name="email" required>
-        </div>
-        <div class="input-box">
-            <input type="password" placeholder="Mot de passe" name="password" required>
-        </div>
-        <div class="remember-forgot">
-            <label><input type="checkbox">Se souvenir de moi</label></br>
-            <a href="#">Mot de passe oublié?</a>
-        </div>
-        <button type="button" class="boutonco" onclick="logIn()">Se connecter</button>
-        <div class="signin">
-            <p>Pas encore inscrit ? <a href="signup.html"> S'inscrire</a></p>
-        </div>
-    </form>
+    <div class="container">
+        <form>
+            <div class="conxcard">
+                <h1 class="eptxt">Espace professionnel</h1>
+                <h1 class="conxtxt">Connexion</h1>
+                <div class="conxcard-body">
+                    <h1>E-mail</h1>
+                    <div class="input-box">
+                        <input type="email" name="email" required>
+                    </div>
+                    <h1>Mot de passe</h1>
+                    <div class="input-box">
+                        <input type="password" name="password" required>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Se souvenir de moi</label></br>
+                        <a class="mdpoubli" href="#">Mot de passe oublié?</a>
+                    </div>
+                    <button type="button" class="boutonco" onclick="logIn()">Connexion</button>
+                    <div class="signin">
+                        <a href="signup.html"></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 <script src="./js/login.js"></script>
 </html>
