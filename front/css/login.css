@@ -15,7 +15,7 @@
 .navbar {
     background-color: #ffff;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .boutonco {
@@ -25,6 +25,19 @@
     width: 135px;
     height: 53px;
     font-family: 'Kanit', bold;
+    font-size: 20px;
+    color: #ffff;
+    margin-top: 50px;
+}
+
+.boutoncr {
+    background-color: #0072BC;
+    justify-content: center;
+    border-radius: 22px;
+    margin-left: 430px;
+    width: 210px;
+    height: 57px;
+    font-family: 'Kanit', 400;
     font-size: 20px;
     color: #ffff;
     margin-top: 50px;
@@ -70,6 +83,22 @@
     font-family: 'Kanit', 400;
     font-size: 48px;
     text-align: center;
+}
+
+.cptprofh {
+    margin-bottom: 20px;
+    padding: 40px;
+    font-family: 'Kanit', 400;
+    font-size: 40px;
+    text-align: center;
+    color: #ffff;
+}
+
+.cptprofp {
+    margin-bottom: 20px;
+    padding: 40px;
+    text-align: center;
+    color: #ffff;
 }
 
 .input-box {
