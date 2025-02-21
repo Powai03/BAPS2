@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
+
+.logo-placeholder {
+    width: 150px;
+    height: 50px;
+    background-color: #ccc;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    color: #666;
+    border-radius: 5px;
+}
+
+.navbar {
+    background-color: #ffff;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.container {
+    display: flex;
+    padding-left: 50px;
+    justify-content: start;
+    align-items: center;
+}
+
+.inscard {
+    background-color: #ffff;
+    border-radius: 33px;
+    width: 953px;
+    height: 607px;
+    justify-content: start;
+}
+
+.inscard-body {
+    border-radius: 33px;
+    width: 953px;
+    height: 607px;
+    padding-right: 20px;
+    padding-left: 20px;
+    justify-content: start;
+}
+
+.conxtxt {
+    font-family: 'Kanit', 400;
+    font-size: 48px;
+    text-align: center;
+}
+
+.input-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    background-color: #D9D9D9;
+    width: 369px;
+    height: 48px;
+    box-align: center;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+}
+
+.eptxt {
+    background-color: #0072BC;
+    color: #ffff;
+    font-family: 'Kanit', bold;
+    font-size: 24px;
+    width: 953px;
+    padding: 15px;
+    text-align: center;
+    border-top-left-radius: 33px;
+    border-top-right-radius: 33px;
+}
+
+.boutonins {
+    background-color: #BB1266;
+    border-radius: 22px;
+    border-color: #DA2128;
+    width: 135px;
+    height: 53px;
+    font-family: 'Kanit', bold;
+    font-size: 20px;
+    color: #ffff;
+    margin-top: 50px;
+}

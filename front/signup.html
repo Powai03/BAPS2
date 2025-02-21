@@ -4,37 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
+    <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
+<header>
+    <nav class="navbar">
+        <div class="logo-placeholder">
+            <a href="#"><img src="#" alt="logo"></a>
+        </div>
+    </nav>
+</header>
 <body>
-    <h1>Formulaire d'inscription</h1>
-    <form>
-        <label for="nom">Nom de l'entreprise</label>
-        <input type="text" name="nom" id="nom" required>
-        
-        <label for="numero">Numéro</label>
-        <input type="text" name="numero" id="numero" required>
-        
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
-        
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password" required>
-        
-        <label for="telephone">Téléphone</label>
-        <input type="text" name="telephone" id="telephone" required>
-        
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description" required>
-        
-        <label for="siteweb">Site Web</label>
-        <input type="text" name="siteweb" id="siteweb" required>
-        
-        <label for="adresse">Adresse</label>
-        <input type="text" name="adresse" id="adresse" required>
-        
-        <button type="submit">S'inscrire</button>
-    </form>
-
+    <div class="container">
+        <form>
+            <div class="inscard">
+                <h1 class="eptxt">Espace professionnel</h1>
+                <h1 class="conxtxt">Creer un compte</h1>
+                <div class="inscard-body">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h1>Prenom</h1>
+                            <div class="input-box">
+                                <input type="text" name="prenom" required>
+                            </div>
+                        </div>
+                        <div>
+                            <h1>Nom</h1>
+                            <div class="input-box">
+                                <input type="text" name="nom" required>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>Addresse</h1>
+                    <div class="input-box">
+                        <input type="name" name="name" required>
+                    </div>
+                    <h1>Numero</h1>
+                    <div class="input-box">
+                        <input type="number" name="name" required>
+                    </div>
+                    <h1>Numero de Téléphone</h1>
+                    <div class="input-box">
+                        <input type="name" name="name" required>
+                    </div>
+                    <label for="nom">Nom de l'entreprise</label>
+                    <input type="text" name="nom" id="nom" required>
+                
+                    <label for="numero">Numéro</label>
+                    <input type="number" name="numero" id="numero" required>
+                    
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                    
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" required>
+                    
+                    <label for="telephone">Téléphone</label>
+                    <input type="text" name="telephone" id="telephone" required>
+                    
+                    <button type="button" class="boutonins" onclick="signup()">Creer</button>
+                </div>
+            </div>
+        </form>
+    </div>
     <script src="./js/signup.js"></script>
 </body>
 </html>
