@@ -19,6 +19,12 @@
     margin-bottom: 40px;
 }
 
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+
 .boutonco {
     background-color: #DA2128;
     border-radius: 22px;
