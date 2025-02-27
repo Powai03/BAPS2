@@ -4,70 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="./css/signup.css">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
-<header>
-    <nav class="navbar">
-        <div class="logo-placeholder">
-            <a href="#"><img src="#" alt="logo"></a>
-        </div>
-    </nav>
-</header>
-<body>
-    <div class="container">
-        <form>
-            <div class="inscard">
-                <h1 class="eptxt">Espace professionnel</h1>
-                <h1 class="conxtxt">Creer un compte</h1>
-                <div class="inscard-body">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <h1>Prenom</h1>
-                            <div class="input-box">
-                                <input type="text" name="prenom" required>
-                            </div>
-                        </div>
-                        <div>
-                            <h1>Nom</h1>
-                            <div class="input-box">
-                                <input type="text" name="nom" required>
-                            </div>
-                        </div>
-                    </div>
-                    <h1>Addresse</h1>
-                    <div class="input-box">
-                        <input type="name" name="name" required>
-                    </div>
-                    <h1>Numero</h1>
-                    <div class="input-box">
-                        <input type="number" name="name" required>
-                    </div>
-                    <h1>Numero de Téléphone</h1>
-                    <div class="input-box">
-                        <input type="name" name="name" required>
-                    </div>
-                    <label for="nom">Nom de l'entreprise</label>
-                    <input type="text" name="nom" id="nom" required>
-                
-                    <label for="numero">Numéro</label>
-                    <input type="number" name="numero" id="numero" required>
-                    
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required>
-                    
-                    <label for="password">Mot de passe</label>
-                    <input type="password" name="password" id="password" required>
-                    
-                    <label for="telephone">Téléphone</label>
-                    <input type="text" name="telephone" id="telephone" required>
-                    
-                    <button type="button" class="boutonins" onclick="signup()">Creer</button>
-                </div>
+<body class="bg-blue-50">
+    <header>
+        <nav class="navbar">
+            <div class="logo-placeholder">
+                <a href="#"><img src="#" alt="logo"></a>
             </div>
-        </form>
+        </nav>
+    </header>
+    
+    <div class="container mx-auto px-4">
+        <div class="inscard shadow-lg">
+            <h1 class="eptxt">Espace professionnel</h1>
+            <h1 class="conxtxt">Créer un compte</h1>
+            
+            <div class="inscard-body">
+                <form>
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Left Column -->
+                        <div class="w-full md:w-1/2 space-y-6 md:pr-8">
+                            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
+                                <div class="w-full md:w-1/2">
+                                    <label class="block mb-1">Prénom *</label>
+                                    <div class="input-box">
+                                        <input type="text" name="prenom" required>
+                                    </div>
+                                </div>
+                                <div class="w-full md:w-1/2">
+                                    <label class="block mb-1">Nom *</label>
+                                    <div class="input-box">
+                                        <input type="text" name="nom" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block mb-1">Adresse *</label>
+                                <div class="input-box w-full">
+                                    <input type="text" name="adresse" required>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
+                                <div class="w-full md:w-1/2">
+                                    <label class="block mb-1">Numéro *</label>
+                                    <div class="input-box">
+                                        <input type="number" name="numero" required>
+                                    </div>
+                                </div>
+                                <div class="w-full md:w-1/2">
+                                    <label class="block mb-1">Information optionnel</label>
+                                    <div class="input-box">
+                                        <input type="text" name="info">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1">Numéro de téléphone *</label>
+                                <div class="input-box w-full">
+                                    <input type="tel" name="telephone" required>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1">E-mail *</label>
+                                <div class="input-box w-full">
+                                    <input type="email" name="email" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Divider -->
+                        <div class="divider hidden md:block"></div>
+                        
+                        <!-- Right Column -->
+                        <div class="w-full md:w-1/2 space-y-6 md:pl-8 mt-6 md:mt-0">
+                            <div>
+                                <label class="block mb-1">Nom de commerce *</label>
+                                <div class="input-box w-full">
+                                    <input type="text" name="nom_commerce" required>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1">Adresse *</label>
+                                <div class="input-box w-full">
+                                    <input type="text" name="adresse_commerce" required>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1">Numéro *</label>
+                                <div class="input-box">
+                                    <input type="number" name="numero_commerce" required>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1">Information optionnel</label>
+                                <div class="input-box">
+                                    <input type="text" name="info_commerce">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1">Nom de commerce *</label>
+                                <div class="input-box w-full">
+                                    <input type="text" name="nom_commerce_alt" required>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-1">E-mail?</label>
+                                <div class="input-box w-full">
+                                    <input type="email" name="email_commerce">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mt-8">
+                        <button type="button" class="boutonins" onclick="signup()">Créer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+    
     <script src="./js/signup.js"></script>
 </body>
 </html>
