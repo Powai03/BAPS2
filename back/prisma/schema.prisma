@@ -22,6 +22,8 @@ model Utilisateur {
   siteWeb       String?
   logo          String?
   role          RoleUtilisateur
+  etatCreation  Boolean @default(false)
+  etatModification Boolean @default(false)
 }
 
 // 📌 Enum pour les rôles des utilisateurs

@@ -1,14 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil</title>
-</head>
-<body>
-    <div class="profil" id="profil">
-        <div class="profildetail" id="profildetail"></div>
-    </div>
-</body>
-<script src="./js/profil.js"></script>
-</html>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profil</title>
+        <script defer src="./js/profil.js"></script>
+        <script defer src="./js/updateProfil.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 p-10 flex justify-center items-center min-h-screen">
+
+        <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl">
+            <h1 class="text-2xl font-bold text-center mb-4">Mon Profil</h1>
+
+            <!-- 📌 Section Profil (Affichage) -->
+            <div id="profileView">
+                <p><strong>Email :</strong> <span id="email"></span></p>
+                <p><strong>Téléphone :</strong> <span id="telephone"></span></p>
+                <p><strong>Adresse :</strong> <span id="adresse"></span></p>
+
+                <!-- Pour une MICROENTREPRISE -->
+                <p id="nomContainer"><strong>Nom :</strong> <span id="nom"></span></p>
+                <p id="prenomContainer"><strong>Prénom :</strong> <span id="prenom"></span></p>
+
+                <!-- Pour une ENTREPRISE -->
+                <div id="entreprise-info" class="hidden">
+                    <h2 class="text-xl font-semibold mt-4">Informations Entreprise</h2>
+                    <p><strong>SIREN :</strong> <span id="siren"></span></p>
+                    <p><strong>Nom du Commerce :</strong> <span id="nom_commerce"></span></p>
+                    <img id="profileLogo" src="" alt="Logo" class="w-32 h-32 rounded-full mt-4">
+                </div>
+
+                <button id="editButton" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Modifier</button>
+            </div>
+
+            <!-- 📌 Section Formulaire (Modification) -->
+            <div id="editFormContainer" class="hidden">
+                <h2 class="text-xl font-semibold mt-4">Modifier le Profil</h2>
+                <form id="updateForm" class="space-y-3">
+                    <label class="block">Téléphone :</label>
+                    <input type="text" id="editTelephone" class="w-full border p-2 rounded">
+
+                    <label class="block">Adresse :</label>
+                    <input type="text" id="editAdresse" class="w-full border p-2 rounded">
+
+                    
+                    
+
+                    <!-- Pour une MICROENTREPRISE -->
+                    <div id="microentrepriseFields">
+                        <label class="block">Nom :</label>
+                        <input type="text" id="editNom" class="w-full border p-2 rounded">
+
+                        <label class="block">Prénom :</label>
+                        <input type="text" id="editPrenom" class="w-full border p-2 rounded">
+                    </div>
+
+                    <!-- Pour une ENTREPRISE -->
+                    <div id="entrepriseFields" class="hidden">
+                        <label class="block">SIREN :</label>
+                        <input type="text" id="editSiren" class="w-full border p-2 rounded">
+
+                        <label class="block">Nom du Commerce :</label>
+                        <input type="text" id="editNomCommerce" class="w-full border p-2 rounded">
+                    </div>
+
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Enregistrer</button>
+                    <button type="button" id="cancelEdit" class="bg-gray-400 text-white px-4 py-2 rounded">Annuler</button>
+                </form>
+                <h1>Upload de l'image</h1>
+        <form id="uploadForm">
+            <input type="file" id="fileInput" name="file" required />
+            <button type="submit">Uploader l'image</button>
+        </form>
+            </div>
+
+            <!-- Déconnexion -->
+            <button onclick="logout()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded w-full">Déconnexion</button>
+        </div>
+
+        <script>
+            function logout() {
+                localStorage.removeItem("token");
+                localStorage.removeItem("userId");
+                window.location.href = "login.html";
+            }
+
+            document.getElementById("editButton").addEventListener("click", () => {
+                document.getElementById("profileView").classList.add("hidden");
+                document.getElementById("editFormContainer").classList.remove("hidden");
+            });
+
+            document.getElementById("cancelEdit").addEventListener("click", () => {
+                document.getElementById("editFormContainer").classList.add("hidden");
+                document.getElementById("profileView").classList.remove("hidden");
+            });
+        </script>
+    <script src="./js/upload.js"></script>
+    </body>
+    </html>
