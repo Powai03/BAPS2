@@ -4,46 +4,69 @@ import jwt from 'jsonwebtoken';
 
 const prisma = new PrismaClient();
 
-// Fonction pour l'inscription
+// Fonction d'inscription
 const signUp = async (req, res) => {
-    const { nom, email, password, numero, telephone, description, adresse, siteWeb } = req.body;
+    const { type, nom, prenom, email, password, telephone, adresse, siren, nom_commerce } = req.body;
 
-    // Validation des champs nécessaires
-    if (!nom || !email || !password || !numero || !telephone || !description || !adresse || !siteWeb) {
-        return res.status(400).json({ message: "Tous les champs doivent être remplis." });
+    // Vérification du type d'inscription
+    if (!type || (type !== "MICRO_ENTREPRISE" && type !== "ENTREPRISE")) {
+        return res.status(400).json({ message: "Le type d'utilisateur doit être soit MICRO_ENTREPRISE soit ENTREPRISE." });
+    }
+
+    // Validation conditionnelle des champs
+    if (type === "MICRO_ENTREPRISE" && (!nom || !prenom)) {
+        return res.status(400).json({ message: "Nom et prénom sont obligatoires pour une micro-entreprise." });
+    }
+    if (type === "ENTREPRISE" && (!siren || !nom_commerce)) {
+        return res.status(400).json({ message: "Le SIREN et le nom du commerce sont obligatoires pour une entreprise." });
+    }
+
+    if (!email || !password || !adresse) {
+        return res.status(400).json({ message: "Email, mot de passe et adresse sont obligatoires." });
     }
 
     try {
-        // Vérification si l'email est déjà utilisé
-        const existingEntreprise = await prisma.entreprise.findUnique({
-            where: { email },
-        });
-        if (existingEntreprise) {
+        // Vérifier si l'email est déjà utilisé
+        const existingUser = await prisma.utilisateur.findUnique({ where: { email } });
+        if (existingUser) {
             return res.status(400).json({ message: "Cet email est déjà utilisé." });
         }
 
-        // Hashing du mot de passe
+        // Hasher le mot de passe
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Création de l'entreprise
-        const entreprise = await prisma.entreprise.create({
+        let role;
+        if (type === "MICRO_ENTREPRISE") {
+            role = "MICRO_ENTREPRISE";
+        } else if (type === "ENTREPRISE") {
+            role = "ENTREPRISE";
+        } else {
+            return res.status(400).json({ message: "Type d'inscription invalide." });
+        }
+
+        // Création de l'utilisateur
+        const utilisateur = await prisma.utilisateur.create({
             data: {
-                email,
+                role: role,
                 nom,
+                prenom,
+                email,
                 password: hashedPassword,
-                numero,
                 telephone,
-                description,
                 adresse,
-                siteWeb,
+                numero: siren,
+                nomEntreprise: nom_commerce
             },
         });
 
-        // Retourner l'entreprise créée
-        res.status(201).json(entreprise);
+        // Générer un token JWT
+        const token = jwt.sign({ id: utilisateur.id, email: utilisateur.email, type }, process.env.JWT_SECRET, { expiresIn: '12h' });
+
+        res.status(201).json({ message: "Inscription réussie", token, userId: utilisateur.id });
+
     } catch (error) {
         console.error("Erreur lors de l'inscription :", error);
-        res.status(500).json({ message: "Erreur interne lors de la création de l'entreprise." });
+        res.status(500).json({ message: "Erreur interne lors de l'inscription." });
     }
 };
 
@@ -52,26 +75,29 @@ const login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await prisma.entreprise.findUnique({
-            where: { email },
-        });
+        // Recherche l'utilisateur
+        const user = await prisma.utilisateur.findUnique({ where: { email } });
 
         if (!user) {
-            return res.status(404).json({ message: 'Aucun utilisateur trouvé avec cet email.' });
+            return res.status(404).json({ message: "Aucun utilisateur trouvé avec cet email." });
         }
 
+        // Vérification du mot de passe
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) {
-            return res.status(401).json({ message: 'Mot de passe invalide.' });
+            return res.status(401).json({ message: "Mot de passe invalide." });
         }
 
-        const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '12h' });
-        res.json({ token, userId: user.id });
+        // Génération du token
+        const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, process.env.JWT_SECRET, { expiresIn: '12h' });
+
+res.json({ token, userId: user.id, role: user.role });
+
 
     } catch (error) {
         console.error("Erreur lors de la connexion :", error);
         res.status(500).json({ message: "Erreur interne lors de la connexion." });
     }
-}
+};
 
 export { signUp, login };

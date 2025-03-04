@@ -1,38 +1,41 @@
-document.querySelector('form').addEventListener('submit', async (event) => {
-    event.preventDefault(); // Empêche l'envoi traditionnel du formulaire
+document.addEventListener("DOMContentLoaded", () => {
+    const microForm = document.getElementById("signup-form-micro");
+    const entrepriseForm = document.getElementById("signup-form-entreprise");
 
-    let nom = document.querySelector('input[name="nom"]').value;
-    let email = document.querySelector('input[name="email"]').value;
-    let password = document.querySelector('input[name="password"]').value;
-    let numero = document.querySelector('input[name="numero"]').value;
-    let telephone = document.querySelector('input[name="telephone"]').value;
-    let description = document.querySelector('input[name="description"]').value;
-    let adresse = document.querySelector('input[name="adresse"]').value;
-    let siteWeb = document.querySelector('input[name="siteweb"]').value;
+    async function handleSignup(event, type) {
+        event.preventDefault();
 
-    // Validation des champs
-    if (!nom || !email || !password || !numero || !telephone || !description || !adresse || !siteWeb) {
-        alert("Tous les champs doivent être remplis.");
-        return;
-    }
+        let formData = new FormData(event.target);
+        let jsonData = Object.fromEntries(formData.entries());
 
-    try {
-        let response = await fetch('http://localhost:3000/auth/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ nom, email, password, numero, telephone, description, adresse, siteWeb }),
-        });
+        // Remplacement de "motdepasse" par "password"
+        jsonData.password = jsonData.motdepasse;
+        delete jsonData.motdepasse;
 
-        if (response.status === 201) {
-            window.location.href = 'login.html'; // Rediriger vers la page de login après inscription réussie
-        } else {
-            const errorData = await response.json();
-            alert(errorData.message || "Une erreur est survenue.");
+        // Ajout du type utilisateur
+        jsonData.type = type;
+
+        try {
+            let response = await fetch("http://localhost:3000/auth/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(jsonData),
+            });
+
+            if (response.ok) {
+                window.location.href = "login.html"; // Redirection après inscription réussie
+            } else {
+                let errorData = await response.json();
+                alert(errorData.message || "Une erreur est survenue.");
+            }
+        } catch (error) {
+            console.error("Erreur lors de l'inscription :", error);
+            alert("Impossible de s'inscrire. Veuillez réessayer plus tard.");
         }
-    } catch (error) {
-        console.error("Erreur lors de la requête :", error);
-        alert("Une erreur est survenue lors de l'inscription.");
     }
+
+    microForm.addEventListener("submit", (event) => handleSignup(event, "MICRO_ENTREPRISE"));
+    entrepriseForm.addEventListener("submit", (event) => handleSignup(event, "ENTREPRISE"));
 });

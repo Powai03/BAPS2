@@ -13,11 +13,6 @@
     border-radius: 5px;
 }
 
-.navbar {
-    background-color: #ffff;
-    padding: 20px;
-    margin-bottom: 40px;
-}
 
 .button-container {
     display: flex;
@@ -35,6 +30,7 @@
     font-size: 20px;
     color: #ffff;
     margin-top: 50px;
+    cursor: pointer;
 }
 
 .boutoncr {
@@ -48,9 +44,11 @@
     font-size: 20px;
     color: #ffff;
     margin-top: 50px;
+    cursor: pointer;
 }
 
 .container {
+    margin-top: 100px;
     display: flex;
     padding-left: 50px;
     justify-content: start;
@@ -116,6 +114,7 @@
     width: 369px;
     height: 48px;
     box-align: center;
+    border-radius: 10px;
 }
 
 .input-box input {

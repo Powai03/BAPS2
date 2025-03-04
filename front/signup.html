@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +9,21 @@
     <link rel="stylesheet" href="./css/signup.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body class="bg-blue-50">
     <header>
-        <nav class="navbar">
-            <div class="logo-placeholder">
-                <a href="#"><img src="#" alt="logo"></a>
-            </div>
-            <div class="espacepro">Espace Pro</div>
-        </nav>
+        
     </header>
     <div class="container mx-auto px-4">
         <div class="inscard shadow-lg">
             <h1 class="eptxt">Espace professionnel</h1>
             <h1 class="conxtxt">Créer un compte</h1>
             <div class="inscard-body">
-                <form>
-                    <div class="flex flex-col md:flex-row">
-                        <!-- Left Column -->
-                        <div class="w-full md:w-1/2 space-y-6 md:pr-8">
+
+                <div class="flex flex-col md:flex-row">
+                    <!-- Left Column -->
+                    <form id="signup-form-micro">
+                        <div class="w-full md:w-full space-y-6 md:pr-8">
                             <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
                                 <div class="w-full md:w-1/2">
                                     <label class="block mb-1">Prénom *</label>
@@ -46,95 +44,94 @@
                                     <input type="text" name="adresse" required>
                                 </div>
                             </div>
-                            
                             <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
                                 <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Numéro *</label>
+                                    <label class="block mb-1">SIREN *</label>
                                     <div class="input-box">
-                                        <input type="number" name="numero" required>
+                                        <input type="number" name="siren" required>
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Information optionnel</label>
+                                    <label class="block mb-1">Numero de téléphone</label>
                                     <div class="input-box">
-                                        <input type="text" name="info">
+                                        <input type="text" name="telephone">
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div>
-                                <label class="block mb-1">Numéro de téléphone *</label>
-                                <div class="input-box w-full">
-                                    <input type="tel" name="telephone" required>
-                                </div>
-                            </div>
-                            
                             <div>
                                 <label class="block mb-1">E-mail *</label>
                                 <div class="input-box w-full">
                                     <input type="email" name="email" required>
                                 </div>
                             </div>
+                            <div>
+                                <label class="block mb-1">Mot de passe</label>
+                                <div class="input-box w-full">
+                                    <input type="password" name="motdepasse" required>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <!-- Divider -->
-                        <div class="divider hidden md:block"></div>
-                        
-                        <!-- Right Column -->
-                        <div class="w-full md:w-1/2 space-y-6 md:pl-8 mt-6 md:mt-0">
+                        <div class="flex justify-center mt-8">
+                            <button type="submit" class="boutonins">Créer</button>
+
+                        </div>
+                    </form>
+
+                    <!-- Divider -->
+                    <div class="divider hidden md:block"></div>
+
+                    <!-- Right Column -->
+                    <form id="signup-form-entreprise">
+                        <div class="w-full md:w-full space-y-6 md:pl-8 mt-6 md:mt-0">
                             <div>
                                 <label class="block mb-1">Nom de commerce *</label>
                                 <div class="input-box w-full">
                                     <input type="text" name="nom_commerce" required>
                                 </div>
                             </div>
-                            
                             <div>
                                 <label class="block mb-1">Adresse *</label>
                                 <div class="input-box w-full">
-                                    <input type="text" name="adresse_commerce" required>
+                                    <input type="text" name="adresse" required>
                                 </div>
                             </div>
-                            
                             <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
                                 <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Numéro *</label>
+                                    <label class="block mb-1">SIREN *</label>
                                     <div class="input-box">
-                                        <input type="number" name="numero_commerce" required>
+                                        <input type="number" name="siren" required>
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Information optionnel</label>
+                                    <label class="block mb-1">Numero de téléphone</label>
                                     <div class="input-box">
-                                        <input type="text" name="info_commerce">
+                                        <input type="text" name="telephone">
                                     </div>
                                 </div>
                             </div>
-                            
                             <div>
-                                <label class="block mb-1">Nom de commerce *</label>
+                                <label class="block mb-1">E-mail *</label>
                                 <div class="input-box w-full">
-                                    <input type="text" name="nom_commerce_alt" required>
+                                    <input type="email" name="email" required>
                                 </div>
                             </div>
-                            
                             <div>
-                                <label class="block mb-1">E-mail?</label>
+                                <label class="block mb-1">Mot de passe *</label>
                                 <div class="input-box w-full">
-                                    <input type="email" name="email_commerce">
+                                    <input type="password" name="motdepasse" required>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="flex justify-center mt-8">
-                        <button type="button" class="boutonins" onclick="signup()">Créer</button>
-                    </div>
-                </form>
+                        <div class="flex justify-center mt-8">
+                            <button type="submit" class="boutonins">Créer</button>
+
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    
-    <script src="./js/signup.js"></script>
+
 </body>
+<script src="./js/signup.js"></script>
 </html>

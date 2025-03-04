@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE `Utilisateur` ADD COLUMN `nomEntreprise` VARCHAR(191) NULL,
+    ADD COLUMN `prenom` VARCHAR(191) NULL,
+    MODIFY `nom` VARCHAR(191) NULL,
+    MODIFY `role` ENUM('MICRO_ENTREPRISE', 'ENTREPRISE', 'ADMIN') NOT NULL;

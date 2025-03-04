@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,55 +8,47 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <title>Connexion</title>
 </head>
-<header>
-    <nav class="navbar">
-        <div class="logo-placeholder">
-            <a href="#"><img src="#" alt="logo"></a>
-        </div>
-    </nav>
-</header>
 <body>
+    
     <div class="container">
-        <form>
+        <form id="login-form" onsubmit="event.preventDefault(); logIn();">
             <div class="conxcard">
                 <h1 class="eptxt">Espace professionnel</h1>
                 <h1 class="conxtxt">Connexion</h1>
                 <div class="conxcard-body">
-                    <h1>E-mail</h1>
+                    <label for="email">E-mail</label>
                     <div class="input-box">
-                        <input type="email" name="email" required>
+                        <input type="email" name="email" id="email" required>
                     </div>
-                    <h1>Mot de passe</h1>
+                    <label for="password">Mot de passe</label>
                     <div class="input-box">
-                        <input type="password" name="password" required>
-                    </div>
-                    <h1>Captcha</h1>
-                    <div class="input-box">
-                        <input type="password" name="password" required>
+                        <input type="password" name="password" id="password" required>
                     </div>
                     <div class="remember-forgot">
-                        <a class="mdpoubli" href="#">Mot de passe oublié?</a>
+                        <a class="mdpoubli" href="#">Mot de passe oublié ?</a>
                     </div>
                     <div class="button-container">
-                        <button type="button" class="boutonco" onclick="login()">Connexion</button>
+                        <button type="submit" class="boutonco">Connexion</button>
                     </div>
                     <div class="signup">
-                        <a href="signup.html"></a>
+                        <a href="signup.html">Créer un compte</a>
                     </div>
                 </div>
             </div>
         </form>
+        
         <div>
             <h1 class="cptprofh">Vous n'avez pas un compte professionnel ?</h1>
-            <p class="cptprofp">BlablablablaBlablablablaBlablablablaBlablablablaBlablablablaBlablablabla
-                                BlablablablaBlablablablaBlablablablaBlablablablaBlablablablaBlablablabla
-                                BlablablablaBlablablablaBlablablablaBlablablablaBlablablablaBlablablabla
-                                BlablablablaBlablablablaBlablablablaBlablablablaBlablablablaBlablablabla
-                                BlablablablaBlablablablaBlablablablaBlablablablaBlablablablaBlablablabla
-                                BlablablablaBlablablablaBlablablablaBlablablablaBlablablablaBlablablabla</p>
-            <button type="button" class="boutoncr" onclick="">Creer un Compte</button>
+            <p class="cptprofp">
+                Blablablabla Blablablabla Blablablabla Blablablabla Blablablabla Blablablabla 
+                Blablablabla Blablablabla Blablablabla Blablablabla Blablablabla Blablablabla
+            </p>
+            <button type="button" class="boutoncr" onclick="window.location.href='signup.html'">
+                Créer un Compte
+            </button>
         </div>
     </div>
+
+    <script src="./js/login.js"></script>
 </body>
-<script src="./js/login.js"></script>
 </html>
