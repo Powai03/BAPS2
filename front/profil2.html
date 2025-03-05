@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <script defer src="./js/upload.js"></script>
+</head>
+<body>
+    <h1>Upload de l'image</h1>
+    <form id="uploadForm">
+        <input type="file" id="fileInput" name="file" required />
+        <button type="submit">Uploader l'image</button>
+    </form>
+    
+    <h2>Image Uploadée:</h2>
+    <img id="uploadedImage" src="" alt="Image uploadée" style="max-width: 300px; display: none;" />
+    
+    <script>
+        const form = document.getElementById("uploadForm");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const fileInput = document.getElementById("fileInput");
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Veuillez choisir un fichier à uploader.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            try {
+                const response = await fetch('http://localhost:3000/upload', { // Assurez-vous que l'URL est correcte
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(result.message);
+                    document.getElementById("uploadedImage").src = result.imageUrl;
+                    document.getElementById("uploadedImage").style.display = "block";
+                } else {
+                    alert(result.message);
+                }
+
+            } catch (error) {
+                console.error("Erreur lors de l'upload:", error);
+                alert("Une erreur est survenue. Essayez encore.");
+            }
+        });
+    </script>
+</body>
+</html>

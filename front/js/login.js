@@ -15,5 +15,9 @@ const logIn = async () => {
     let data = await response.json();
     localStorage.setItem('token', data.token); // Stocker le token JWT
     localStorage.setItem('userId', data.userId);
+    localStorage.setItem('role', data.role);
+    localStorage.setItem('nom', data.nom);
+    localStorage.setItem('nomEntreprise', data.nom_commerce);
+    
     window.location.href = 'home.html';
 }
