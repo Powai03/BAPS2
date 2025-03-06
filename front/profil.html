@@ -78,11 +78,28 @@
             <!-- Déconnexion -->
             <button onclick="logout()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded w-full">Déconnexion</button>
         </div>
-        <div>
-            <img src="https://res.cloudinary.com/dpmse5han/image/upload/v1741162229/KilouCorp.png" alt="" srcset="">
+        <div class="logoentreprise">
+            
         </div>
 
         <script>
+            const role = localStorage.getItem("role");
+            let nom;
+            if (role === "ENTREPRISE") {
+                nom = localStorage.getItem("nomEntreprise");
+            } else {
+                nom = localStorage.getItem("nom");
+            }
+            console.log(role);
+            console.log(nom);
+            const imageurl = localStorage.getItem("imageUrl");
+            console.log
+
+            function displayLogo(){
+                document.querySelector(".logoentreprise").innerHTML =
+                `<img src="https://res.cloudinary.com/dpmse5han/image/upload/v1741162229/${nom}.png" alt="" srcset=""> `;    
+                }
+            displayLogo();
             function logout() {
                 localStorage.removeItem("token");
                 localStorage.removeItem("userId");

@@ -43,6 +43,8 @@ form.addEventListener("submit", async (e) => {
         const result = await response.json();
         alert(result.message || "Fichier uploadé avec succès !");
         console.log("Résultat de l'upload :", result);
+        console.log("Image URL :", result.imageUrl);
+        localStorage.setItem("imageUrl", result.imageUrl);
 
     } catch (error) {
         console.error("Erreur lors de l'upload:", error);
