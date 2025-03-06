@@ -16,7 +16,8 @@
 
 .button-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     margin-top: 50px;
 }
 
@@ -33,19 +34,6 @@
     cursor: pointer;
 }
 
-.boutoncr {
-    background-color: #0072BC;
-    justify-content: center;
-    border-radius: 22px;
-    margin-left: 430px;
-    width: 210px;
-    height: 57px;
-    font-family: 'Kanit', 400;
-    font-size: 20px;
-    color: #ffff;
-    margin-top: 50px;
-    cursor: pointer;
-}
 
 .container {
     margin-top: 100px;
@@ -125,4 +113,12 @@
 .mdpoubli {
     text-decoration: none;
     color: gray;
+}
+
+footer {
+    background-color: #0072BC;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin: 15px;
 }

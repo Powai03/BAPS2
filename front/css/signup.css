@@ -97,14 +97,14 @@ label {
 }
 
 .eptxt {
-    background-color: #0072BC;
+    background-color: #204283;
     color: #ffff;
     font-family: 'Kanit', sans-serif;
     font-weight: 700;
     font-size: 24px;
     width: 100%;
-    padding: 15px;
-    text-align: center;
+    padding: 25px;
+    text-align: left;
     border-top-left-radius: 33px;
     border-top-right-radius: 33px;
 }
