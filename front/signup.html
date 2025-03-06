@@ -12,14 +12,18 @@
 
 <body class="bg-blue-50">
     <header>
-
+        <div class="topbar">
+            <a href="index.html">
+                <img src="#" alt="Logo" class="h-10">
+            </a>
+        </div>
     </header>
     <div class="container mx-auto px-4">
         <div class="inscard shadow-lg">
-            <div class="">
-                <h1 class="eptxt">&larr; Espace professionnel</h1>
+            <div class="epcontainer flex justify-between items-center">
+                <h1 class="eptxt"><a href="#" onclick="goBack()"><span style='font-size:25px; padding-right: 15px;'>&#11013;</span></a> Espace professionnel</h1>
+                <h1 class="eptxt">Creation de votre espace</h1>
             </div>
-            <h1 class="conxtxt">Créer un compte</h1>
             <div class="inscard-body">
                 <div class="flex flex-col md:flex-row">
                     <!-- Left Column -->
@@ -47,16 +51,22 @@
                             </div>
                             <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
                                 <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">SIREN *</label>
+                                    <label class="block mb-1">Complement d'address *</label>
                                     <div class="input-box">
                                         <input type="number" name="siren" required>
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Numero de téléphone</label>
+                                    <label class="block mb-1">Code Postal *</label>
                                     <div class="input-box">
-                                        <input type="text" name="telephone">
+                                        <input type="number" name="codepostal" required>
                                     </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block mb-1">Numero de telephone *</label>
+                                <div class="input-box w-full">
+                                    <input type="number" name="password" required>
                                 </div>
                             </div>
                             <div>
@@ -65,17 +75,8 @@
                                     <input type="email" name="email" required>
                                 </div>
                             </div>
-                            <div>
-                                <label class="block mb-1">Mot de passe</label>
-                                <div class="input-box w-full">
-                                    <input type="password" name="motdepasse" required>
-                                </div>
-                            </div>
                         </div>
                     </form>
-
-                    <!-- Divider -->
-                    <div class="divider hidden md:block"></div>
 
                     <!-- Right Column -->
                     <form id="signup-form-entreprise">

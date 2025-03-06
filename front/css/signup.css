@@ -12,6 +12,10 @@ body {
     padding: 20px;
 }
 
+.topbar {
+    
+}
+
 .logo-placeholder {
     width: 150px;
     height: 50px;
@@ -48,6 +52,7 @@ body {
 }
 
 .container {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,8 +61,8 @@ body {
 .inscard {
     background-color: #ffff;
     border-radius: 33px;
-    width: 100%;
-    max-width: 1200px;
+    width: 941px;
+    height: 700px;
     overflow: hidden;
     margin-bottom: 50px;
 }
@@ -96,12 +101,8 @@ label {
     font-weight: 500;
 }
 
-.eptxt {
+.epcontainer {
     background-color: #204283;
-    color: #ffff;
-    font-family: 'Kanit', sans-serif;
-    font-weight: 700;
-    font-size: 24px;
     width: 100%;
     padding: 25px;
     text-align: left;
@@ -109,12 +110,20 @@ label {
     border-top-right-radius: 33px;
 }
 
+.eptxt {
+    margin-left: 25px;
+    color: #ffff;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+}
+
 .boutonins {
-    background-color: #BB1266;
-    border-radius: 22px;
+    background-color: #204283;
+    border-radius: 10px;
     border: none;
-    width: 135px;
-    height: 53px;
+    width: 364.35px;
+    height: 48px;
     font-family: 'Kanit', sans-serif;
     font-weight: 700;
     font-size: 20px;
