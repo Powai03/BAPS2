@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         email.textContent = user.email || "Non renseigné";
         telephone.textContent = user.telephone || "Non renseigné";
         adresse.textContent = user.adresse || "Non renseigné";
-        siren.textContent = user.siren || "Non renseigné"; // SIREN s'affiche pour tous
+        siren.textContent = user.numero || "Non renseigné"; // SIREN s'affiche pour tous
 
         // Gestion spécifique selon le rôle
         if (user.role === "ENTREPRISE") {
