@@ -132,13 +132,12 @@ label {
     background-color: #9e0e56;
 }
 
-/* Divider between columns */
-.divider {
-    width: 15px;
-    border-radius: 15px;
-    background-color: #ccc;
-    margin: 0 auto;
-    position: relative;
+footer {
+    background: linear-gradient(-90deg, #0D23D2 44%, #0022FF 100%);
+    color: white;
+    text-align: start;
+    width: auto;
+    height: 52px;
 }
 
 /* Responsive adjustments */
