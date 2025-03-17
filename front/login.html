@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Connexion</title>
 </head>
+<header class="topbar">
+    <img src="./img/chaville-logo.png" alt="Logo" class="logo">
+</header>
 <body>
-    
     <div class="container">
         <form id="login-form" onsubmit="event.preventDefault(); logIn();">
             <div class="conxcard">
-                <h1 class="eptxt">Espace professionnel</h1>
-                <h1 class="conxtxt">Connexion</h1>
                 <div class="conxcard-body">
+                    <h1 class="eptxt">Espace professionnel</h1>
                     <label for="email">E-mail</label>
                     <div class="input-box">
                         <input type="email" name="email" id="email" required>
@@ -28,16 +30,17 @@
                         <a class="mdpoubli" href="#">Mot de passe oublié ?</a>
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="boutonco">Connexion</button>
+                        <button type="submit" class="buttonco bg-gradient-to-r from-[#204283] to-[#070F1D] text-white py-2 px-4 rounded">Se connecter</button>
                     </div>
                     <div class="flex justify-center">
-                        <p class="compte">Vous n'avez encore active votre espace? </p>
-                        <a href="./signup.html">Inscrivez-vous</a>
+                        <p class="compte">Vous n'avez encore active votre espace?</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <a class="crcomp" href="./signup.html">Creer un compte</a>
                     </div>
                 </div>
             </div>
         </form>
-        
     </div>
 
     <script src="./js/login.js"></script>
