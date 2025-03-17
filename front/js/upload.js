@@ -11,19 +11,7 @@ form.addEventListener("submit", async (e) => {
         return;
     }
 
-    let publicId;
-    if (localStorage.getItem("role") === "ENTREPRISE") {
-        publicId = localStorage.getItem("nomEntreprise");
-    } else {
-        publicId = localStorage.getItem("nom") + localStorage.getItem("prenom");
-    }
-
-    console.log("Public ID récupéré :", publicId);
-
-    if (!publicId) {
-        alert("Nom ou nomEntreprise manquant dans localStorage.");
-        return;
-    }
+    
 
     // Création d'un FormData pour envoyer le fichier
     const formData = new FormData();

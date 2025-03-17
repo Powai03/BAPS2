@@ -7,28 +7,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// 📌 Modèle Utilisateur
 model Utilisateur {
-  id            String  @id @default(uuid()) 
-  nom           String?  // Facultatif pour les entreprises
-  prenom        String?  // Facultatif pour les entreprises
-  nomEntreprise String?  // Facultatif pour les micro-entreprises
-  email         String  @unique
-  password      String
-  numero        String?
-  telephone     String?
-  description   String?
-  adresse       String
-  siteWeb       String?
-  logo          String?
-  role          RoleUtilisateur
-  etatCreation  Boolean @default(false)
-  etatModification Boolean @default(false)
+  id                 String  @id @default(uuid()) 
+  nom                String?  // Facultatif pour les entreprises
+  prenom             String?  // Facultatif pour les entreprises
+  nomEntreprise      String?  // Facultatif pour les micro-entreprises
+  email              String  @unique
+  password           String  
+  numero             String?
+  telephone          String?
+  adresse            String  @default("Inconnu")
+  complementAdresse  String?
+  codePostal         String  @default("00000")
+  profession         String  @default("Inconnu")
+  domaineActivite    String  @default("Inconnu")
+  description        String?
+  siteWeb            String?
+  logo               String?
+  justificatif       String?  // Lien du fichier Cesu/Siren
+  pieceIdentite      String?  // Lien du fichier de la pièce d'identité
+  role               RoleUtilisateur
+  etatCreation       Boolean @default(false)
+  etatModification   Boolean @default(false)
+  typeCompte         String  @default("auto-entrepreneur")
+  typeInscription    String  @default("CESU")
 }
 
 // 📌 Enum pour les rôles des utilisateurs
 enum RoleUtilisateur {
-  MICRO_ENTREPRISE
+  AUTO_ENTREPRENEUR
   ENTREPRISE
   ADMIN
 }

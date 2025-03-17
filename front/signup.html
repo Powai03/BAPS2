@@ -5,133 +5,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./css/signup.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-blue-50">
-    <header>
-        
-    </header>
-    <div class="container mx-auto px-4">
-        <div class="inscard shadow-lg">
-            <h1 class="eptxt">Espace professionnel</h1>
-            <h1 class="conxtxt">Créer un compte</h1>
-            <div class="inscard-body">
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white shadow-lg p-6 rounded-lg max-w-2xl mx-auto">
+            <h1 class="text-xl font-semibold text-center">Créer un compte</h1>
 
-                <div class="flex flex-col md:flex-row">
-                    <!-- Left Column -->
-                    <form id="signup-form-micro">
-                        <div class="w-full md:w-full space-y-6 md:pr-8">
-                            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Prénom *</label>
-                                    <div class="input-box">
-                                        <input type="text" name="prenom" required>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Nom *</label>
-                                    <div class="input-box">
-                                        <input type="text" name="nom" required>
-                                    </div>
-                                </div>
+            <form id="signup-form">
+                <!-- Informations de base -->
+                <div>
+                    <!-- Sélection du type de compte -->
+                    <div class="mt-4">
+                        <label class="block mb-2 font-medium">Vous êtes :</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="accountType" value="auto-entrepreneur" checked onclick="toggleFields()">
+                                <span class="ml-2">Auto-entrepreneur</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="accountType" value="entreprise" onclick="toggleFields()">
+                                <span class="ml-2">Entreprise</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Champs dynamiques -->
+                    <div id="nameFields" class="mt-4">
+                        <div id="auto-entrepreneur-fields" class="flex space-x-4">
+                            <div class="w-1/2">
+                                <label class="block mb-1">Prénom *</label>
+                                <input type="text" name="prenom" class="input-box w-full" required>
                             </div>
-                            <div>
-                                <label class="block mb-1">Adresse *</label>
-                                <div class="input-box w-full">
-                                    <input type="text" name="adresse" required>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">SIREN *</label>
-                                    <div class="input-box">
-                                        <input type="number" name="siren" required>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Numero de téléphone</label>
-                                    <div class="input-box">
-                                        <input type="text" name="telephone">
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block mb-1">E-mail *</label>
-                                <div class="input-box w-full">
-                                    <input type="email" name="email" required>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block mb-1">Mot de passe</label>
-                                <div class="input-box w-full">
-                                    <input type="password" name="motdepasse" required>
-                                </div>
+                            <div class="w-1/2">
+                                <label class="block mb-1">Nom *</label>
+                                <input type="text" name="nom" class="input-box w-full" required>
                             </div>
                         </div>
-                        <div class="flex justify-center mt-8">
-                            <button type="submit" class="boutonins">Créer</button>
-
+                        <div id="entreprise-fields" class="hidden">
+                            <label class="block mb-1">Nom de l'entreprise *</label>
+                            <input type="text" name="nom_entreprise" class="input-box w-full">
                         </div>
-                    </form>
+                    </div>
 
-                    <!-- Divider -->
-                    <div class="divider hidden md:block"></div>
-
-                    <!-- Right Column -->
-                    <form id="signup-form-entreprise">
-                        <div class="w-full md:w-full space-y-6 md:pl-8 mt-6 md:mt-0">
-                            <div>
-                                <label class="block mb-1">Nom de commerce *</label>
-                                <div class="input-box w-full">
-                                    <input type="text" name="nom_commerce" required>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block mb-1">Adresse *</label>
-                                <div class="input-box w-full">
-                                    <input type="text" name="adresse" required>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">SIREN *</label>
-                                    <div class="input-box">
-                                        <input type="number" name="siren" required>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Numero de téléphone</label>
-                                    <div class="input-box">
-                                        <input type="text" name="telephone">
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block mb-1">E-mail *</label>
-                                <div class="input-box w-full">
-                                    <input type="email" name="email" required>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block mb-1">Mot de passe *</label>
-                                <div class="input-box w-full">
-                                    <input type="password" name="motdepasse" required>
-                                </div>
-                            </div>
+                    <!-- Adresse -->
+                    <div class="mt-4">
+                        <label class="block mb-1">Adresse *</label>
+                        <input type="text" name="adresse" class="input-box w-full" required>
+                    </div>
+                    <div class="mt-4 flex space-x-4">
+                        <div class="w-1/2">
+                            <label class="block mb-1">Complément d'adresse</label>
+                            <input type="text" name="complement_adresse" class="input-box w-full">
                         </div>
-                        <div class="flex justify-center mt-8">
-                            <button type="submit" class="boutonins">Créer</button>
-
+                        <div class="w-1/2">
+                            <label class="block mb-1">Code postal *</label>
+                            <input type="text" name="code_postal" class="input-box w-full" required>
                         </div>
-                    </form>
+                    </div>
+
+                    <!-- Numéro de téléphone -->
+                    <div class="mt-4">
+                        <label class="block mb-1">Numéro de téléphone *</label>
+                        <input type="text" name="telephone" class="input-box w-full" required>
+                    </div>
+
+                    <!-- Profession et domaine d'activité -->
+                    <div class="mt-4 flex space-x-4">
+                        <div class="w-1/2">
+                            <label class="block mb-1">Profession *</label>
+                            <input type="text" name="profession" class="input-box w-full" required>
+                        </div>
+                        <div class="w-1/2">
+                            <label class="block mb-1">Domaine d'activité *</label>
+                            <input type="text" name="domaine_activite" class="input-box w-full" required>
+                        </div>
+                    </div>
+
+                    <!-- Email et mot de passe -->
+                    <div class="mt-4">
+                        <label class="block mb-1">E-mail *</label>
+                        <input type="email" name="email" class="input-box w-full" required>
+                    </div>
+                    <div class="mt-4">
+                        <label class="block mb-1">Mot de passe *</label>
+                        <input type="password" name="motdepasse" id="password" class="input-box w-full" required>
+                    </div>
+                    <div class="mt-4">
+                        <label class="block mb-1">Confirmer le mot de passe *</label>
+                        <input type="password" name="confirm_motdepasse" id="confirm_password" class="input-box w-full" required>
+                        <p id="passwordError" class="text-red-500 text-sm hidden">Les mots de passe ne correspondent pas</p>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <label class="flex items-center">
+                            <input type="checkbox" id="acceptTerms" required class="mr-2">
+                            <span>J'accepte les <a href="#" class="text-blue-500 underline">termes et conditions</a></span>
+                        </label>
+                    </div>
+
+                    <!-- Bouton Inscription -->
+                    <div class="mt-6 text-center">
+                        <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg">S'inscrire</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
+    <script>
+        function validatePasswords() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+            const passwordError = document.getElementById("passwordError");
+
+            if (password !== confirmPassword || password === "") {
+                passwordError.classList.remove("hidden");
+                return false; 
+            } else {
+                passwordError.classList.add("hidden");
+                return true;
+            }
+        }
+
+        
+
+        function toggleFields() {
+            const autoEntrepreneurFields = document.getElementById("auto-entrepreneur-fields");
+            const entrepriseFields = document.getElementById("entreprise-fields");
+            const prenom = document.querySelector('input[name="prenom"]');
+            const nom = document.querySelector('input[name="nom"]');
+            const nomEntreprise = document.querySelector('input[name="nom_entreprise"]');
+
+            if (document.querySelector('input[name="accountType"]:checked').value === "auto-entrepreneur") {
+                autoEntrepreneurFields.classList.remove("hidden");
+                entrepriseFields.classList.add("hidden");
+                prenom.setAttribute("required", "true");
+                nom.setAttribute("required", "true");
+                nomEntreprise.removeAttribute("required");
+            } else {
+                autoEntrepreneurFields.classList.add("hidden");
+                entrepriseFields.classList.remove("hidden");
+                prenom.removeAttribute("required");
+                nom.removeAttribute("required");
+                nomEntreprise.setAttribute("required", "true");
+            }
+        }
+    </script>
+    <script src="./js/signup.js"></script>
 </body>
-<script src="./js/signup.js"></script>
 </html>
