@@ -12,16 +12,16 @@
 
 <body>
     <header>
-        <div class="topbar">
+        <div class="navbar">
             <a href="index.html">
-                <img src="img/chaville-logo.png" alt="Logo" class="h-10">
+                <img src="img/chaville-logo.png" alt="Logo" class="logo">
             </a>
         </div>
     </header>
     <div class="container mx-auto px-4">
         <div class="inscard shadow-lg">
             <div class="epcontainer flex justify-between items-center">
-                <h1 class="eptxt"><a href="#" onclick="goBack()"><span style='font-size:25px; padding-right: 15px;'>&#11013;</span></a> Espace professionnel</h1>
+                <h1 class="eptxt"><a href="./login.html" onclick="goBack()"><span style='font-size:25px; padding-right: 15px;'>&#11013;</span></a> Espace professionnel</h1>
                 <h1 class="eptxt">Creation de votre espace</h1>
             </div>
             <div class="inscard-body">
@@ -30,23 +30,28 @@
                     <form id="signup-form-micro">
                         <div class="w-full md:w-full space-y-6 md:pr-8">
                             <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Prénom *</label>
-                                    <div class="input-box">
-                                        <input type="text" name="prenom" required>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Nom *</label>
-                                    <div class="input-box">
-                                        <input type="text" name="nom" required>
-                                    </div>
+                                <div class="w-full">
+                                    <label class="block mb-1">VOUS ÊTES: </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="type_inscription" value="auto_entrepreneur" required>
+                                        <span class="ml-2">Auto Entrepreneur</span>
+                                    </label>
+                                    <label class="inline-flex items-center ml-4">
+                                        <input type="radio" name="type_inscription" value="entreprise" required>
+                                        <span class="ml-2">Entreprise</span>
+                                    </label>
                                 </div>
                             </div>
                             <div>
-                                <label class="block mb-1">Adresse *</label>
+                                <label class="block mb-1">Nom de la société *</label>
                                 <div class="input-box w-full">
-                                    <input type="text" name="adresse" required>
+                                    <input type="text" name="Nomsociété" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block mb-1">Addresse *</label>
+                                <div class="input-box w-full">
+                                    <input type="text" name="address" required>
                                 </div>
                             </div>
                             <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
@@ -67,12 +72,6 @@
                                 <label class="block mb-1">Numero de telephone *</label>
                                 <div class="input-box w-full">
                                     <input type="number" name="password" required>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block mb-1">E-mail *</label>
-                                <div class="input-box w-full">
-                                    <input type="email" name="email" required>
                                 </div>
                             </div>
                         </div>
@@ -130,5 +129,9 @@
     </div>
 </body>
 <script src="./js/signup.js"></script>
-<footer>2025 Ville de Chaville | Mentions legales</footer>
+<footer>
+    <div class="footertext">
+        &copy; 2025 Ville de Chaville | Mentions legales
+    </div>
+</footer>
 </html>

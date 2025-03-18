@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
 
-body {
-    background-color: #f0f8ff;
-    font-family: 'Kanit', sans-serif;
-}
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -12,18 +7,11 @@ body {
     padding: 20px;
 }
 
-.logo-placeholder {
-    width: 150px;
-    height: 50px;
-    background-color: #010188;
-    text-align: center;
-    line-height: 50px;
-    font-size: 20px;
-    color: #ffffff;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.logo {
+    width: 155px;
+    height: 34px;
+    align-items: start;
+    margin: 15px;
 }
 
 .espacepro {
@@ -41,10 +29,8 @@ body {
 }
 
 .navbar {
-    background-color: #ffff;
-    padding: 20px;
-    margin-bottom: 40px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
 }
 
 .container {
@@ -115,7 +101,7 @@ label {
 }
 
 .boutonins {
-    background-color: #204283;
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
     border-radius: 10px;
     border: none;
     width: 364.35px;
@@ -133,11 +119,15 @@ label {
 }
 
 footer {
-    background: linear-gradient(-90deg, #0D23D2 44%, #0022FF 100%);
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
     color: white;
     text-align: start;
     width: auto;
     height: 52px;
+}
+
+.footertext {
+    padding: 15px;
 }
 
 /* Responsive adjustments */

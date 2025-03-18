@@ -79,7 +79,7 @@ img {
 
 .input-box {
     background-color: #f5f5f5;
-    border: 1px solid #4a4a4a;
+    border: none;
     border-radius: 10px;
     margin-bottom: 15px;
     position: relative;
@@ -125,9 +125,13 @@ label {
 }
 
 footer {
-    background: linear-gradient(-90deg, #0D23D2 44%, #0022FF 100%);
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
     color: white;
     text-align: start;
     width: auto;
     height: 52px;
+}
+
+.footertext {
+    padding: 15px;
 }
