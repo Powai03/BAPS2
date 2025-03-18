@@ -46,47 +46,54 @@ img {
     align-items: center;
 }
 
+/* Updated card styles to match the design */
 .conxcard {
-    border-radius: 33px;
+    border-radius: 30px;
     width: 425px;
-    height: 678px;
+    height: auto;
     justify-content: start;
     overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .conxcard-body {
     width: 425px;
-    height: 607px;
+    height: auto;
     margin-top: 0;
     padding-right: 20px;
     padding-left: 20px;
+    padding-bottom: 60px; /* Increased bottom padding */
     justify-content: start;
-    border-radius: 33px;
-    background: linear-gradient(180deg, rgba(26, 70, 148, 0.2) 0%, rgba(13, 42, 118, 0.2) 100%);
-    border-color: #000000;
-    overflow: visible;
+    border-radius: 30px;
+    background: linear-gradient(135deg, rgba(134, 98, 199, 0.8) 0%, rgba(72, 52, 212, 0.8) 100%);
+    border-color: transparent;
+    overflow: hidden;
     box-sizing: border-box;
     position: relative;
 }
 
-.eptxt {
-    background-color: #204283;
-    color: #ffff;
-    font-family: 'Kanit', bold;
-    font-size: 24px;
-    width: 425px;
-    padding: 15px 0;
-    margin-bottom: 40px;
-    text-align: center;
-    border-top-left-radius: 33px;
-    border-top-right-radius: 33px;
+.epcontainer {
+    background: #1f2fd5;
+    width: calc(100% + 40px);
     margin-left: -20px;
-    box-sizing: content-box;
-    position: relative;
+    padding: 15px 25px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
 }
 
+.eptxt {
+    color: #ffff;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+
 .input-box {
-    background-color: #f5f5f5;
+    background-color: rgba(255, 255, 255, 0.8);
     border: none;
     border-radius: 10px;
     margin-bottom: 15px;
@@ -121,7 +128,7 @@ label {
     color: #ffff;
     font-family: 'Kanit', bold;
     font-size: 16px;
-    margin-top: 5px;
+    margin-top: 20px; /* Increased top margin */
 }
 
 .crcomp {
@@ -147,7 +154,8 @@ footer {
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .container {
-        padding-left: 0;
+        padding: 0;
+        margin: 80px;
     }
 
     .conxcard {
@@ -160,6 +168,8 @@ footer {
 
     .eptxt {
         width: 100%;
+        margin: 15px; /* Adjust margin to fit properly */
+        box-sizing: border-box; /* Ensure proper sizing */
     }
 
     .input-box {
