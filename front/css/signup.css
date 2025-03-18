@@ -29,6 +29,7 @@
 }
 
 .navbar {
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
     padding: 15px;
     margin-bottom: 20px;
 }

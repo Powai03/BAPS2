@@ -1,21 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap");
 
-.topbar {
-    color: #ffff;
-    padding: 15px;
-    margin: 15px;
-}
-
 img {
     width: 155px;
     height: 34px;
 }
+
+.logo {
+    width: 155px;
+    height: 34px;
+    align-items: start;
+    margin: 15px;
+}
+
 
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 25px;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    padding: 15px;
+    margin-bottom: 20px;
 }
 
 .buttonco {
