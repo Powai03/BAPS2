@@ -4,8 +4,6 @@ import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-
-
 dotenv.config();
 
 // Configuration de Cloudinary
@@ -15,39 +13,53 @@ cloudinary.v2.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-const uploadProfileImage = async (req, res) => {
+const uploadVitrineImage = async (req, res) => {
     try {
-        const publicId = req.body.publicId;
+        const { email, publicId } = req.body;
         const file = req.file; // Récupère le fichier envoyé par Multer
 
         if (!file) {
             return res.status(400).json({ success: false, message: "Aucun fichier reçu." });
         }
 
-        if (!publicId) {
-            return res.status(400).json({ success: false, message: "Public ID manquant." });
+        if (!email || !publicId) {
+            return res.status(400).json({ success: false, message: "Email ou Public ID manquant." });
+        }
+
+        // Vérifier si l'utilisateur existe
+        const utilisateur = await prisma.utilisateur.findUnique({
+            where: { email }
+        });
+
+        if (!utilisateur) {
+            return res.status(404).json({ success: false, message: "Utilisateur non trouvé." });
         }
 
         const filePath = file.path;
         console.log("Public ID reçu :", publicId);
         console.log("Fichier sauvegardé temporairement :", filePath);
 
-        // Upload du fichier vers Cloudinary en mode **asynchrone**
+        // Upload du fichier vers Cloudinary
         const result = await cloudinary.v2.uploader.upload(filePath, {
-            public_id: publicId,  
+            public_id: `vitrine/${publicId}`,  // Stocke dans un dossier "vitrine"
             resource_type: 'image',
-            overwrite: true  
+            overwrite: false  // Ne pas écraser les images existantes
         });
 
         console.log("Upload réussi :", result);
-        const utilisateur = await prisma.utilisateur.update({
-            where: { email: req.body.email }, // Assure-toi que l'email est bien envoyé dans la requête
-            data: { logo: result.secure_url }
+
+        // Enregistrement du lien de l'image en base de données
+        const nouvelleImage = await prisma.image.create({
+            data: {
+                utilisateurId: utilisateur.id,
+                url: result.secure_url,
+                type: "vitrine"
+            }
         });
 
-        console.log("✅ Logo mis à jour en BDD :", utilisateur.logo);
+        console.log("✅ Image ajoutée à la BDD :", nouvelleImage.url);
 
-        // Supprime le fichier temporaire après l'upload
+        // Supprime le fichier temporaire
         fs.unlink(filePath, (err) => {
             if (err) {
                 console.error("Erreur lors de la suppression du fichier temporaire :", err);
@@ -58,14 +70,13 @@ const uploadProfileImage = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Image uploadée avec succès.",
-            publicId: result.public_id,  
-            imageUrl: result.secure_url  
+            message: "Image ajoutée avec succès à la vitrine.",
+            publicId: result.public_id,
+            imageUrl: result.secure_url
         });
-        
 
     } catch (error) {
-        console.error("Erreur Cloudinary :", error);
+        console.error("Erreur lors de l'upload :", error);
         return res.status(500).json({
             success: false,
             message: "Échec de l'upload de l'image.",
@@ -74,4 +85,4 @@ const uploadProfileImage = async (req, res) => {
     }
 };
 
-export { uploadProfileImage };
+export { uploadVitrineImage };

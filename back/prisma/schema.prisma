@@ -21,7 +21,7 @@ model Utilisateur {
   codePostal         String  @default("00000")
   profession         String  @default("Inconnu")
   domaineActivite    String  @default("Inconnu")
-  description        String?
+  description        String? @db.Text
   siteWeb            String?
   logo               String?
   justificatif       String?  // Lien du fichier Cesu/Siren
@@ -29,8 +29,11 @@ model Utilisateur {
   role               RoleUtilisateur
   etatCreation       Boolean @default(false)
   etatModification   Boolean @default(false)
+  etatJustificatif   Boolean @default(false)
   typeCompte         String  @default("auto-entrepreneur")
   typeInscription    String  @default("CESU")
+  modifications      Modification[]
+  images             Image[]
 }
 
 // 📌 Enum pour les rôles des utilisateurs
@@ -38,4 +41,32 @@ enum RoleUtilisateur {
   AUTO_ENTREPRENEUR
   ENTREPRISE
   ADMIN
+}
+
+model Modification {
+  id               String   @id @default(uuid())
+  utilisateurId    String   
+  utilisateur      Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+  nom             String?
+  prenom          String?
+  nomEntreprise   String?
+  email           String?
+  description    String?  @db.Text
+  password        String?
+  telephone       String?
+  adresse         String?
+  complementAdresse String?
+  codePostal      String?
+  siteWeb         String?
+  etatValidation  Boolean  @default(false) // false = en attente, true = validé
+  createdAt       DateTime @default(now())
+}
+
+model Image {
+  id            String   @id @default(uuid())  
+  utilisateurId String   
+  utilisateur   Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+  url           String   // Lien de l'image
+  type          String   // Exemple : "profil", "justificatif", etc.
+  createdAt     DateTime @default(now())
 }

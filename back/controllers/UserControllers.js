@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
+import { v4 as uuidv4 } from "uuid"; // Importer uuid pour générer un id manuellement
+
 
 const prisma = new PrismaClient();
 
@@ -29,7 +31,13 @@ const getUser = async (req, res) => {
                     adresse: true,
                     numero: true,
                     logo: true,
-                    nomEntreprise: true
+                    nomEntreprise: true,
+                    siteWeb: true,
+                    domaineActivite: true,
+                    profession: true,
+                    codePostal: true,
+                    complementAdresse: true,
+                    description: true,
                 },
             });
 
@@ -46,6 +54,8 @@ const getUser = async (req, res) => {
 };
 
 // Mettre à jour les informations de l'utilisateur
+
+
 const updateUser = async (req, res) => {
     const token = req.headers['x-access-token'];
 
@@ -59,43 +69,171 @@ const updateUser = async (req, res) => {
         }
 
         try {
-            // Récupérer les nouvelles infos depuis la requête
-            const { nom, prenom, email, telephone, adresse, numero, nomEntreprise, logo } = req.body;
+            console.log("🔹 Token décodé :", decoded);
 
-            const updatedUser = await prisma.utilisateur.update({
-                where: { id: decoded.id },
-                data: {
-                    nom: nom || undefined,
-                    prenom: prenom || undefined,
-                    email: email || undefined,
-                    telephone: telephone || undefined,
-                    adresse: adresse || undefined,
-                    numero: numero || undefined,
-                    nomEntreprise: nomEntreprise || undefined,
-                    logo: logo || undefined
+            const {
+                nom,
+                prenom,
+                nomEntreprise,
+                email,
+                password,
+                telephone,
+                adresse,
+                complementAdresse,
+                codePostal,
+                siteWeb,
+                description
+            } = req.body;
+
+            console.log("📩 Données reçues :", req.body);
+
+            // Vérifier si une modification est déjà en attente
+            const existingModification = await prisma.modification.findFirst({
+                where: {
+                    utilisateurId: decoded.id, // ✅ Correction ici
+                    etatValidation: false,
                 },
-                select: {
-                    id: true,
-                    role: true,
-                    nom: true,
-                    prenom: true,
-                    email: true,
-                    telephone: true,
-                    adresse: true,
-                    numero: true,
-                    nomEntreprise: true,
-                    logo: true
-                }
             });
 
-            res.json({ message: "Profil mis à jour avec succès", user: updatedUser });
+            console.log("🔍 Modification existante :", existingModification);
+
+            if (existingModification) {
+                return res.status(400).json({ message: "Une modification est déjà en attente de validation." });
+            }
+
+            // Insérer la nouvelle modification
+            const modification = await prisma.modification.create({
+                data: {
+                    id: uuidv4(),
+                    utilisateurId: decoded.id, // ✅ Correction ici
+                    nom: nom || null,
+                    prenom: prenom || null,
+                    nomEntreprise: nomEntreprise || null,
+                    email: email || null,
+                    password: password || null,
+                    telephone: telephone || null,
+                    adresse: adresse || null,
+                    complementAdresse: complementAdresse || null,
+                    codePostal: codePostal || null,
+                    siteWeb: siteWeb || null,
+                    description: description || null,
+                    etatValidation: false, 
+                },
+            });
+
+            console.log("✅ Modification créée :", modification);
+
+            res.json({ message: "Votre modification a été soumise pour validation.", modification });
         } catch (error) {
-            console.error("Erreur lors de la mise à jour :", error);
-            res.status(500).json({ message: "Erreur serveur" });
+            console.error("❌ Erreur lors de la soumission :", error);
+            res.status(500).json({ message: "Erreur serveur", erreur: error.message });
         }
     });
 };
 
+// ✅ Récupérer les utilisateurs selon leur état de création
+const getUsersByEtatCreation = async (req, res) => {
+    try {
+        const { etatCreation } = req.query; // Récupère la valeur (true/false) depuis l'URL
+        const users = await prisma.utilisateur.findMany({
+            where: { etatCreation: etatCreation === "true" }, // Convertit en booléen
+            select: { id: true, nom: true, prenom: true, email: true, role: true, etatCreation: true }
+        });
+
+        res.json(users);
+    } catch (error) {
+        console.error("❌ Erreur lors de la récupération :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+// ✅ Valider un utilisateur (passer etatCreation à true)
+const validateUser = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await prisma.utilisateur.update({ where: { id }, data: { etatCreation: true } });
+        res.json({ message: "Utilisateur validé avec succès" });
+    } catch (error) {
+        console.error("❌ Erreur lors de la validation :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+// ❌ Supprimer un utilisateur
+const deleteUser = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await prisma.utilisateur.delete({ where: { id } });
+        res.json({ message: "Utilisateur supprimé avec succès" });
+    } catch (error) {
+        console.error("❌ Erreur lors de la suppression :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+const getModifications = async (req, res) => {
+    try {
+        const modifications = await prisma.modification.findMany({
+            where: { etatValidation: false },
+            include: { utilisateur: { select: { nom: true, prenom: true, email: true } } }
+        });
+
+        res.json(modifications);
+    } catch (error) {
+        console.error("❌ Erreur lors de la récupération des modifications :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+const validateModification = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const modification = await prisma.modification.findUnique({ where: { id } });
+
+        if (!modification) {
+            return res.status(404).json({ message: "Modification non trouvée" });
+        }
+
+        await prisma.utilisateur.update({
+            where: { id: modification.utilisateurId },
+            data: {
+                nom: modification.nom ?? undefined,
+                prenom: modification.prenom ?? undefined,
+                nomEntreprise: modification.nomEntreprise ?? undefined,
+                email: modification.email ?? undefined,
+                password: modification.password ?? undefined,
+                telephone: modification.telephone ?? undefined,
+                adresse: modification.adresse ?? undefined,
+                complementAdresse: modification.complementAdresse ?? undefined,
+                codePostal: modification.codePostal ?? undefined,
+                siteWeb: modification.siteWeb ?? undefined,
+                description: modification.description ?? undefined,
+            },
+        });
+
+        await prisma.modification.delete({ where: { id } });
+
+        res.json({ message: "Modification validée et appliquée avec succès" });
+    } catch (error) {
+        console.error("❌ Erreur lors de la validation :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+const rejectModification = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await prisma.modification.delete({ where: { id } });
+        res.json({ message: "Modification refusée et supprimée" });
+    } catch (error) {
+        console.error("❌ Erreur lors du refus :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+export { getUser, updateUser , getUsersByEtatCreation, validateUser, deleteUser, getModifications, validateModification, rejectModification };
 
 
-export { getUser, updateUser };
