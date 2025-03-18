@@ -22,7 +22,7 @@ img {
 
 .navbar {
     background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
-    padding: 15px;
+    padding: 5px;
     margin-bottom: 20px;
 }
 
@@ -142,4 +142,39 @@ footer {
 
 .footertext {
     padding: 15px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 0;
+    }
+
+    .conxcard {
+        width: 100%;
+    }
+
+    .conxcard-body {
+        width: 100%;
+    }
+
+    .eptxt {
+        width: 100%;
+    }
+
+    .input-box {
+        width: 100%;
+    }
+
+    .input-box input {
+        width: 100%;
+    }
+
+    .button-container {
+        margin: 0;
+    }
+
+    .buttonco {
+        width: 100%;
+    }
 }

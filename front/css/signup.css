@@ -30,7 +30,7 @@
 
 .navbar {
     background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
-    padding: 15px;
+    padding: 5px;
     margin-bottom: 20px;
 }
 
@@ -136,6 +136,7 @@ footer {
 @media (max-width: 768px) {
     .inscard {
         border-radius: 20px;
+        width: 95%;
     }
     
     .inscard-body {
@@ -148,5 +149,39 @@ footer {
     
     .eptxt {
         font-size: 20px;
+    }
+
+    .epcontainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .epcontainer h1:last-child {
+        margin-left: 25px;
+        margin-top: 10px;
+    }
+
+    .boutonins {
+        width: 90%;
+        max-width: 364px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 120px;
+    }
+    
+    .inscard-body {
+        padding: 15px;
+    }
+    
+    .eptxt {
+        font-size: 18px;
+        margin-left: 15px;
+    }
+    
+    .container {
+        margin-top: 20px;
     }
 }
