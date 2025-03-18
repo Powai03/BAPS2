@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap");
 
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
 img {
     width: 155px;
     height: 34px;
@@ -12,7 +21,6 @@ img {
     margin: 15px;
 }
 
-
 .button-container {
     display: flex;
     justify-content: center;
@@ -24,6 +32,10 @@ img {
     background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
     padding: 5px;
     margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
 }
 
 .buttonco {
@@ -37,16 +49,19 @@ img {
     background: linear-gradient(-90deg, #0042cc 0%, #0033a0 100%);
 }
 
-
-.container {
-    margin-top: 40px;
-    display: flex;
-    padding-left: 150px;
-    justify-content: start;
-    align-items: center;
+main {
+    flex: 1;
 }
 
-/* Updated card styles to match the design */
+.container {
+    margin: 40px auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 150px;
+}
+
 .conxcard {
     border-radius: 30px;
     width: 425px;
@@ -62,11 +77,10 @@ img {
     margin-top: 0;
     padding-right: 20px;
     padding-left: 20px;
-    padding-bottom: 60px; /* Increased bottom padding */
+    padding-bottom: 60px;
     justify-content: start;
     border-radius: 30px;
     background: linear-gradient(135deg, rgba(134, 98, 199, 0.8) 0%, rgba(72, 52, 212, 0.8) 100%);
-    border-color: transparent;
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
@@ -90,7 +104,6 @@ img {
     font-weight: 700;
     font-size: 22px;
 }
-
 
 .input-box {
     background-color: rgba(255, 255, 255, 0.8);
@@ -128,7 +141,7 @@ label {
     color: #ffff;
     font-family: 'Kanit', bold;
     font-size: 16px;
-    margin-top: 20px; /* Increased top margin */
+    margin-top: 20px;
 }
 
 .crcomp {
@@ -143,8 +156,12 @@ footer {
     background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
     color: white;
     text-align: start;
-    width: auto;
+    width: 100%;
     height: 52px;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+    margin-top: auto;
 }
 
 .footertext {
@@ -154,12 +171,14 @@ footer {
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .container {
-        padding: 0;
-        margin: 80px;
+        padding: 0 20px;
+        margin: 40px auto;
+        justify-content: center;
     }
 
     .conxcard {
         width: 100%;
+        max-width: 425px;
     }
 
     .conxcard-body {
@@ -168,8 +187,8 @@ footer {
 
     .eptxt {
         width: 100%;
-        margin: 15px; /* Adjust margin to fit properly */
-        box-sizing: border-box; /* Ensure proper sizing */
+        margin: 0;
+        box-sizing: border-box;
     }
 
     .input-box {
@@ -181,10 +200,11 @@ footer {
     }
 
     .button-container {
-        margin: 0;
+        margin: 20px 0;
     }
 
     .buttonco {
         width: 100%;
+        max-width: 369px;
     }
 }
