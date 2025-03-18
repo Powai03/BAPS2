@@ -81,41 +81,43 @@
                     <form id="signup-form-entreprise">
                         <div class="w-full md:w-full space-y-6 md:pl-8 mt-6 md:mt-0">
                             <div>
-                                <label class="block mb-1">Nom de commerce *</label>
+                                <label class="block mb-1">Profession *</label>
                                 <div class="input-box w-full">
-                                    <input type="text" name="nom_commerce" required>
+                                    <input type="text" name="profession" required>
                                 </div>
                             </div>
                             <div>
-                                <label class="block mb-1">Adresse *</label>
+                                <label class="block mb-1">Domaine d’activité *</label>
                                 <div class="input-box w-full">
-                                    <input type="text" name="adresse" required>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">SIREN *</label>
-                                    <div class="input-box">
-                                        <input type="number" name="siren" required>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-1/2">
-                                    <label class="block mb-1">Numero de téléphone</label>
-                                    <div class="input-box">
-                                        <input type="text" name="telephone">
-                                    </div>
+                                    <select class="input-box" name="activité" required>
+                                        <option value="" disabled selected>Défiler pour sélectionner</option>
+                                        <option value="activité">Artisans</option>
+                                        <option value="activité2">Commerce et vente</option>
+                                        <option value="activité3">Santé et Bien-être</option>
+                                        <option value="activité4">Restauration et Hôtellerie</option>
+                                        <option value="activité5">Services à la personne</option>
+                                        <option value="activité6">Immobilier et Construction</option>
+                                        <option value="activité7">Gestion et Conseil</option>
+                                        <option value="activité8">Informatique et Création</option>
+                                    </select>
                                 </div>
                             </div>
                             <div>
                                 <label class="block mb-1">E-mail *</label>
-                                <div class="input-box w-full">
+                                <div class="input-box">
                                     <input type="email" name="email" required>
                                 </div>
                             </div>
                             <div>
-                                <label class="block mb-1">Mot de passe *</label>
+                                <label class="block mb-1">Créer un Mot de passe *</label>
                                 <div class="input-box w-full">
-                                    <input type="password" name="motdepasse" required>
+                                    <input type="password" name="password" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block mb-1">Confirmer le Mot de passe *</label>
+                                <div class="input-box w-full">
+                                    <input type="password" name="confirmepassword" required>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +133,7 @@
 <script src="./js/signup.js"></script>
 <footer>
     <div class="footertext">
-        &copy; 2025 Ville de Chaville | Mentions legales
+        &copy; 2025 Ville de Chaville
     </div>
 </footer>
 </html>
