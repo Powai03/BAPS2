@@ -5,6 +5,26 @@
     align-items: center;
 }
 
+h1 {
+    padding-top: 50px;
+    padding-left: 25px;
+    font-size: 128px;
+    font-weight: bold;
+    font-family: 'Kanit';
+    background: linear-gradient(44deg, #0D23D2, #0022FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    padding-top: 25px;
+    padding-left: 25px;
+    font-size: 24px;
+    font-family: 'Kanit';
+    font-weight: bold;
+}
+
 .error {
     margin-right: 20px;
     font-size: 128px;
@@ -16,6 +36,10 @@ h2 {
     font-size: 24px;
     font-weight: bold;
     font-family: 'Kanit';
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 p {
@@ -30,6 +54,10 @@ footer {
     width: auto;
     height: 52px;
     display: block; /* Ensure the element is displayed */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .footer p {
@@ -37,4 +65,5 @@ footer {
     font-size: 0.8rem;
     padding-left: 50px;
     font-family: 'Kanit';
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
 }

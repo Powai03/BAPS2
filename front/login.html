@@ -10,18 +10,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Connexion</title>
 </head>
-<header>
-    <nav>
-        <img class="logo" src="./img/chaville-logo.png" alt="Logo">
-        <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Présentation</a></li>
-            <li><a href="#">Vitrine</a></li>
-        </ul>
-    </nav>
-</header>
 <body class="flex flex-col min-h-screen">
-    <main class="flex-grow">
+    <header>
+        <nav>
+            <img class="logo" src="./img/chaville-logo.png" alt="Logo">
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Présentation</a></li>
+                <li><a href="#">Vitrine</a></li>
+                <li><img class="geeko" src="./img/geeko.svg" alt="Logo"></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="flex-grow pt-16">
         <div class="container">
             <form id="login-form" onsubmit="event.preventDefault(); logIn();">
                 <div class="conxcard">
@@ -52,9 +53,6 @@
                     </div>
                 </div>
             </form>
-            <div class="flex justify-end mt-4"></div>
-                <img class="geeko" src="./img/geeko.svg" alt="geeko">
-            </div>
         </div>
     </main>
     <footer class="w-full">
