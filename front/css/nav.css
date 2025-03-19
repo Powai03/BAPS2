@@ -19,6 +19,26 @@ nav {
     left: 0;
 }
 
+.btn {
+    background-color: #ffffff;
+    color: rgb(46, 17, 209);
+    font-family: 'Kanit';
+    font-weight: normal;
+    font-size: 16px;
+    justify-content: flex-end;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 200px;
+    height: 50px;
+    border-radius: 100px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 nav a {
     text-decoration: none;
     color: white;

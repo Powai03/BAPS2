@@ -65,5 +65,5 @@ footer {
     font-size: 0.8rem;
     padding-left: 50px;
     font-family: 'Kanit';
-    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    background: linear-gradient(90deg, #0D23D2, #0022FF);
 }
