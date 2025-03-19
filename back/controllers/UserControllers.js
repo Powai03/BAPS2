@@ -38,6 +38,10 @@ const getUser = async (req, res) => {
                     codePostal: true,
                     complementAdresse: true,
                     description: true,
+                    pieceIdentite: true,
+                    justificatif: true,
+                    typeCompte: true,
+                    etatCreation: true
                 },
             });
 
@@ -117,6 +121,7 @@ const updateUser = async (req, res) => {
                     codePostal: codePostal || null,
                     siteWeb: siteWeb || null,
                     description: description || null,
+
                     etatValidation: false, 
                 },
             });
@@ -137,7 +142,7 @@ const getUsersByEtatCreation = async (req, res) => {
         const { etatCreation } = req.query; // Récupère la valeur (true/false) depuis l'URL
         const users = await prisma.utilisateur.findMany({
             where: { etatCreation: etatCreation === "true" }, // Convertit en booléen
-            select: { id: true, nom: true, prenom: true, email: true, role: true, etatCreation: true }
+            select: { id: true,numero:true, nomEntreprise:true, nom: true, prenom: true, email: true, role: true, etatCreation: true, justificatif: true, pieceIdentite: true }
         });
 
         res.json(users);

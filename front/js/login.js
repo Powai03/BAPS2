@@ -18,6 +18,8 @@ const logIn = async () => {
     localStorage.setItem('role', data.role);
     localStorage.setItem('nom', data.nom);
     localStorage.setItem('nomEntreprise', data.nom_commerce);
+    localStorage.setItem('email', email);
+    localStorage.setItem('etatCreation', data.etatCreation);
     
     window.location.href = 'home.html';
 }

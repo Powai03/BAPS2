@@ -12,7 +12,7 @@ const signUp = async (req, res) => {
         let {
             accountType, email, password, telephone, adresse, 
             complement_adresse, code_postal, profession, domaine_activite,   
-            nom, prenom, nom_entreprise
+            nom, prenom, nom_entreprise, numero
         } = req.body;
 
         // Vérification des champs obligatoires
@@ -42,6 +42,7 @@ const signUp = async (req, res) => {
             typeCompte: accountType,
             etatCreation: false,
             etatModification: false,
+            numero: numero || null,
             role: accountType === "auto-entrepreneur" ? "AUTO_ENTREPRENEUR" : "ENTREPRISE"
 
         };

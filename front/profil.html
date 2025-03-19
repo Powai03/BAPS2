@@ -1,121 +1,241 @@
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Profil</title>
-        <script defer src="./js/profil.js"></script>
-        <script defer src="./js/updateProfil.js"></script>
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-gray-100 p-10 flex justify-center items-center min-h-screen">
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-10 flex justify-center items-center min-h-screen">
+    <div class="container flex mx-auto px-4 py-8">
+        <div class="boutoncontainer flex flex-col">
+            <button id="compte" class="bg-blue-500 text-white px-4 py-2 rounded">Mon compte</button>
+            <button id="gestion" class="bg-blue-500 text-white px-4 py-2 rounded">Gestion du compte</button>
+            <button id="vitrine" class="bg-blue-500 text-white px-4 py-2 rounded">Ma vitrine</button>
+            <button id="justificatif" class="bg-blue-500 text-white px-4 py-2 rounded">Mes documents</button>
+            <button id="admin" class="bg-blue-500 text-white px-4 py-2 rounded">Admin</button>
+        </div>
         <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl">
             <h1 class="text-2xl font-bold text-center mb-4">Mon Profil</h1>
 
             <!-- 📌 Section Profil (Affichage) -->
             <div id="profileView">
-                <p><strong>Email :</strong> <span id="email"></span></p>
-                <p><strong>Téléphone :</strong> <span id="telephone"></span></p>
-                <p><strong>Adresse :</strong> <span id="adresse"></span></p>
+                <div id="profilContainer">
+                    <!-- Pour une MICROENTREPRISE -->
+                    <div id="auto-entrepreneur-info" class="">
+                        <p> <span id="nom"></span></p>
+                        <p> <span id="prenom"></span></p>
+                        <div class="logoentreprise w-24 h-24 rounded-full mt-4"></div>
+                        <p><strong>Email :</strong> <span id="email"></span></p>
+                        <p><strong>Téléphone :</strong> <span id="telephone"></span></p>
+                        <p><strong>Adresse :</strong> <span id="adresse"></span></p>
+                        <p><strong>Site Web :</strong> <span id="siteWeb"></span></p>
+                        <p><strong>Domaine d'activité :</strong> <span id="domaineActivite"></span></p>
+                        <p><strong>Profession :</strong> <span id="profession"></span></p>
+                        <p><strong>CESU :</strong> <span id="numero"></span></p>
+                        <p><strong>Description :</strong> <span id="description"></span></p>
+                    </div>
+                    <!-- Pour une ENTREPRISE -->
+                    <div id="entreprise-info" class="hidden">
+                        <h2 class="text-xl font-semibold mt-4">Informations Entreprise</h2>
+                        <p> <span id="nomEntreprise"></span></p>
+                        <div class="logoentreprise w-12 h-12 rounded-full mt-4"></div>
+                        <p><strong>Email :</strong> <span id="email"></span></p>
+                        <p><strong>Téléphone :</strong> <span id="telephone"></span></p>
+                        <p><strong>Adresse :</strong> <span id="adresse"></span></p>
+                        <p><strong>Site Web :</strong> <span id="siteWeb"></span></p>
+                        <p><strong>Domaine d'activité :</strong> <span id="domaineActivite"></span></p>
+                        <p><strong>Profession :</strong> <span id="profession"></span></p>
+                        <p><strong>SIREN :</strong> <span id="numero"></span></p>
+                        <p><strong>Description :</strong> <span id="description"></span></p>
+                    </div>
+                </div>
+                <!-- 📌 Section Formulaire (Modification) -->
+                <div id="gestionContainer" class="">
+                    <h2 class="text-xl font-semibold mt-4">Modifier le Profil</h2>
+                    <form id="updateForm" class="space-y-3">
+                        <!-- Pour un AUTOENTREPRENEUR -->
+                        <div id="microentrepriseFields">
+                            <label class="block">Nom :</label>
+                            <input type="text" id="editNom" class="w-full border p-2 rounded">
 
-                <!-- Pour une MICROENTREPRISE -->
-                <p id="nomContainer"><strong>Nom :</strong> <span id="nom"></span></p>
-                <p id="prenomContainer"><strong>Prénom :</strong> <span id="prenom"></span></p>
+                            <label class="block">Prénom :</label>
+                            <input type="text" id="editPrenom" class="w-full border p-2 rounded">
+                        </div>
 
-                <!-- Pour une ENTREPRISE -->
-                <div id="entreprise-info" class="hidden">
-                    <h2 class="text-xl font-semibold mt-4">Informations Entreprise</h2>
-                    <p><strong>SIREN :</strong> <span id="siren"></span></p>
-                    <p><strong>Nom du Commerce :</strong> <span id="nom_commerce"></span></p>
-                    <img id="profileLogo" src="" alt="Logo" class="w-32 h-32 rounded-full mt-4">
+                        <!-- Pour une ENTREPRISE -->
+                        <div id="entrepriseFields" class="hidden">
+                            <label class="block">Nom de l'entreprise :</label>
+                            <input type="text" id="editNomCommerce" class="w-full border p-2 rounded">
+                        </div>
+                        <label class="block">Email :</label>
+                        <input type="email" id="editEmail" class="w-full border p-2 rounded">
+                        <label class="block">Mot de passe :</label>
+                        <input type="password" id="editPassword" class="w-full border p-2 rounded">
+                        <label class="block">Téléphone :</label>
+                        <input type="text" id="editTelephone" class="w-full border p-2 rounded">
+                        <label class="block">SiteWeb :</label>
+                        <input type="text" id="editSiteWeb" class="w-full border p-2 rounded">
+                        <label class="block">Adresse :</label>
+                        <input type="text" id="editAdresse" class="w-full border p-2 rounded" placeholder="Adresse">
+                        <input type="text" id="editComplementAdresse" class="w-full border p-2 rounded"
+                            placeholder="Complément d'adresse">
+                        <input type="text" id="editCodePostal" class="w-full border p-2 rounded"
+                            placeholder="Code postal">
+
+                        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Enregistrer les
+                            changements*</button>
+                        <p>(*Soumis à la validation d'un administrateur)</p>
+                    </form>
+                    <h1>Changement de Logo</h1>
+                    <form id="uploadForm">
+                        <input type="file" id="fileInput" name="file" />
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Uploader l'image</button>
+                    </form>
                 </div>
 
-                <button id="editButton" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Modifier</button>
+                <!-- 📌 Section Vitrine (Affichage et ajout) -->
+                <div id="vitrineContainer" class=" flex flex-col">
+                    <h1>Ajouter des photos</h1>
+                    <form id="uploadVitrineForm">
+                        <input type="file" id="fileInputVitrine" name="file" />
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Uploader des
+                            images</button>
+                    </form>
+                    <form id="descriptionForm" class="space-y-3 flex flex-col">
+                        <label for="description">Description de votre entreprise</label>
+                        <textarea name="description" id="descriptionArea" cols="30" rows="10"></textarea>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enregistrer</button>
+                    </form>
+
+                    <div id="displayImages">
+                        <h1>Images de la vitrine</h1>
+
+                    </div>
+                </div>
+
+                <!-- 📌 Section Mes documents (ajout) -->
+                <div class="justificatifContainer">
+                    <h1>Justificatif</h1>
+                    <form id="identiteForm">
+                        <input type="file" id="identiteInput" name="file" />
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Uploader le
+                            justificatif</button>
+                    </form>
+                    <form id="numeroForm">
+                        <input type="file" id="numeroInput" name="file" />
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Uploader le
+                            justificatif</button>
+                    </form>
+                    <h2>Justificatif en cours de validation :</h2>
+                    <div id="identiteImage"></div>
+                    <div id="numeroImage"></div>
+                </div>
+
+                <!-- 📌 Section admin (Validation) -->
+                <div class="adminContainer">
+                    <div class="validation">
+                        <h1>Demandes d'inscription</h1>
+                    </div>
+                    <div class="modificationValidation">
+                        <h1>Demandes de modification</h1>
+                    </div>
+                    <div class="annuaire">
+                        <h1>Annuaire des utilisateurs</h1>
+                    </div>
+                </div>
+
+
+                <button onclick="logout()"
+                    class="mt-4 bg-red-500 text-white px-4 py-2 rounded w-full">Déconnexion</button>
             </div>
 
-            <!-- 📌 Section Formulaire (Modification) -->
-            <div id="editFormContainer" class="hidden">
-                <h2 class="text-xl font-semibold mt-4">Modifier le Profil</h2>
-                <form id="updateForm" class="space-y-3">
-                    <label class="block">Téléphone :</label>
-                    <input type="text" id="editTelephone" class="w-full border p-2 rounded">
 
-                    <label class="block">Adresse :</label>
-                    <input type="text" id="editAdresse" class="w-full border p-2 rounded">
 
-                    
-                    
-
-                    <!-- Pour une MICROENTREPRISE -->
-                    <div id="microentrepriseFields">
-                        <label class="block">Nom :</label>
-                        <input type="text" id="editNom" class="w-full border p-2 rounded">
-
-                        <label class="block">Prénom :</label>
-                        <input type="text" id="editPrenom" class="w-full border p-2 rounded">
-                    </div>
-
-                    <!-- Pour une ENTREPRISE -->
-                    <div id="entrepriseFields" class="hidden">
-                        <label class="block">SIREN :</label>
-                        <input type="text" id="editSiren" class="w-full border p-2 rounded">
-
-                        <label class="block">Nom du Commerce :</label>
-                        <input type="text" id="editNomCommerce" class="w-full border p-2 rounded">
-                    </div>
-
-                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Enregistrer</button>
-                    <button type="button" id="cancelEdit" class="bg-gray-400 text-white px-4 py-2 rounded">Annuler</button>
-                </form>
-                <h1>Upload de l'image</h1>
-        <form id="uploadForm">
-            <input type="file" id="fileInput" name="file"  />
-            <button type="submit">Uploader l'image</button>
-        </form>
-            </div>
-
-            <!-- Déconnexion -->
-            <button onclick="logout()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded w-full">Déconnexion</button>
-        </div>
-        <div class="logoentreprise">
-            
-        </div>
-
-        <script>
-            const role = localStorage.getItem("role");
-            let nom;
-            if (role === "ENTREPRISE") {
-                nom = localStorage.getItem("nomEntreprise");
-            } else {
-                nom = localStorage.getItem("nom");
-            }
-            console.log(role);
-            console.log(nom);
-            const imageurl = localStorage.getItem("imageUrl");
-            console.log
-
-            function displayLogo(){
-                document.querySelector(".logoentreprise").innerHTML =
-                `<img src="https://res.cloudinary.com/dpmse5han/image/upload/v1741162229/${nom}.png" alt="" srcset=""> `;    
+            <script>
+                const role = localStorage.getItem("role");
+                let nom;
+                if (role === "ENTREPRISE") {
+                    nom = localStorage.getItem("nomEntreprise");
+                } else {
+                    nom = localStorage.getItem("nom");
                 }
-            displayLogo();
-            function logout() {
-                localStorage.removeItem("token");
-                localStorage.removeItem("userId");
-                window.location.href = "login.html";
-            }
+                console.log(role);
 
-            document.getElementById("editButton").addEventListener("click", () => {
-                document.getElementById("profileView").classList.add("hidden");
-                document.getElementById("editFormContainer").classList.remove("hidden");
-            });
+                function logout() {
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("userId");
+                    window.location.href = "login.html";
+                }
 
-            document.getElementById("cancelEdit").addEventListener("click", () => {
-                document.getElementById("editFormContainer").classList.add("hidden");
-                document.getElementById("profileView").classList.remove("hidden");
-            });
-        </script>
-    <script src="./js/upload.js"></script>
-    </body>
-    </html>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const role = localStorage.getItem("role");
+
+                    // Boutons
+                    const compteBtn = document.getElementById("compte");
+                    const gestionBtn = document.getElementById("gestion");
+                    const vitrineBtn = document.getElementById("vitrine");
+                    const justificatifBtn = document.getElementById("justificatif");
+                    const adminBtn = document.getElementById("admin");
+
+                    // Containers
+                    const profilContainer = document.getElementById("profilContainer");
+                    const gestionContainer = document.getElementById("gestionContainer");
+                    const vitrineContainer = document.getElementById("vitrineContainer");
+                    const justificatifContainer = document.querySelector(".justificatifContainer");
+                    const adminContainer = document.querySelector(".adminContainer");
+
+                    // Masquer tous les containers au début
+                    function hideAllContainers() {
+                        profilContainer.style.display = "none";
+                        gestionContainer.style.display = "none";
+                        vitrineContainer.style.display = "none";
+                        justificatifContainer.style.display = "none";
+                        adminContainer.style.display = "none";
+                    }
+
+                    // Affichage au clic
+                    compteBtn.addEventListener("click", () => {
+                        hideAllContainers();
+                        profilContainer.style.display = "block";
+                    });
+
+                    gestionBtn.addEventListener("click", () => {
+                        hideAllContainers();
+                        gestionContainer.style.display = "block";
+                    });
+
+                    vitrineBtn.addEventListener("click", () => {
+                        hideAllContainers();
+                        vitrineContainer.style.display = "block";
+                    });
+
+                    justificatifBtn.addEventListener("click", () => {
+                        hideAllContainers();
+                        justificatifContainer.style.display = "block";
+                    });
+
+                    adminBtn.addEventListener("click", () => {
+                        hideAllContainers();
+                        adminContainer.style.display = "block";
+                    });
+                    hideAllContainers();
+                    // Masquer le bouton Admin si l'utilisateur n'est pas admin
+                    if (role !== "ADMIN") {
+                        adminBtn.style.display = "none";
+                    }
+                    const etatCreation = localStorage.getItem("etatCreation");
+                    
+                });
+
+            </script>
+            <script src="./js/upload.js"></script>
+            <script defer src="./js/uploadVitrine.js"></script>
+            <script defer src="./js/profil.js"></script>
+            <script defer src="./js/updateProfil.js"></script>
+            <script defer src="./js/uploadJustificatif.js"></script>
+</body>
+
+</html>

@@ -1,5 +1,16 @@
 document.getElementById("updateForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Empêche le rechargement de la page
+
+    const nom = document.getElementById("editNom").value.trim();
+    const prenom = document.getElementById("editPrenom").value.trim();
+    const nomEntreprise = document.getElementById("editNomCommerce")?.value.trim() || null;
+    const email = document.getElementById("editEmail").value.trim();
+    const password = document.getElementById("editPassword").value.trim();
+    const telephone = document.getElementById("editTelephone").value.trim();
+    const adresse = document.getElementById("editAdresse").value.trim();
+    const complementAdresse = document.getElementById("editComplementAdresse").value.trim();
+    const codePostal = document.getElementById("editCodePostal").value.trim();
+    const siteWeb = document.getElementById("editSiteWeb").value.trim();
 
     const token = localStorage.getItem("token");
 
@@ -8,39 +19,39 @@ document.getElementById("updateForm").addEventListener("submit", async (event) =
         return;
     }
 
-    // Récupération des valeurs modifiées
-    const updatedData = {
-        telephone: document.getElementById("editTelephone").value,
-        adresse: document.getElementById("editAdresse").value,
-        logo: document.getElementById("editLogo").value  // Si tu ajoutes un champ logo pour l'upload
+    const formData = {
+        nom: nom || null,
+        prenom: prenom || null,
+        nomEntreprise: nomEntreprise || null,
+        email: email || null,
+        password: password || null,
+        telephone: telephone || null,
+        adresse: adresse || null,
+        complementAdresse: complementAdresse || null,
+        codePostal: codePostal || null,
+        siteWeb: siteWeb || null,
     };
-
-    if (document.getElementById("editSiren")) {
-        updatedData.siren = document.getElementById("editSiren").value;
-        updatedData.nomEntreprise = document.getElementById("editNomCommerce").value;
-    }
 
     try {
         const response = await fetch("http://localhost:3000/user/update", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "x-access-token": token,
+                "x-access-token": token
             },
-            body: JSON.stringify(updatedData),
+            body: JSON.stringify(formData)
         });
 
-        const result = await response.json();
+        const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error(result.message || "Erreur lors de la mise à jour");
+        if (response.ok) {
+            alert("Votre demande de modification a été soumise pour validation.");
+        } else {
+            alert(`Erreur : ${data.message}`);
         }
-
-        alert("Profil mis à jour avec succès !");
-        window.location.reload();
-
     } catch (error) {
-        console.error("Erreur :", error);
-        alert("Une erreur est survenue lors de la mise à jour.");
+        console.error("Erreur lors de l'envoi :", error);
+        alert("Une erreur est survenue. Veuillez réessayer plus tard.");
     }
 });
+

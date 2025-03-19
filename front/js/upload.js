@@ -11,10 +11,23 @@ form.addEventListener("submit", async (e) => {
         return;
     }
 
-    
+    let publicId;
+    if (localStorage.getItem("role") === "ENTREPRISE") {
+        publicId = localStorage.getItem("nomEntreprise");
+    } else {
+        publicId = localStorage.getItem("nom") + localStorage.getItem("prenom");
+    }
+    let email = localStorage.getItem("email");
+    console.log("Public ID récupéré :", publicId);
+
+    if (!publicId) {
+        alert("Nom ou nomEntreprise manquant dans localStorage.");
+        return;
+    }
 
     // Création d'un FormData pour envoyer le fichier
     const formData = new FormData();
+    formData.append("email", email); // Ajout de l'email au formData
     formData.append("file", file);
     formData.append("publicId", publicId); // Ajout du publicId au formData
 
@@ -33,6 +46,7 @@ form.addEventListener("submit", async (e) => {
         console.log("Résultat de l'upload :", result);
         console.log("Image URL :", result.imageUrl);
         localStorage.setItem("imageUrl", result.imageUrl);
+        
 
     } catch (error) {
         console.error("Erreur lors de l'upload:", error);
