@@ -1,1 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap");
+
+h1 {
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-transform: none;
+    font-style: normal;
+}
+
+h2 {
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+}
+
+p {
+    font-family: "Kanit", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+
+li {
+    /* make the bulletpoints visible */
+    list-style-type: disc;
+    font-family: "Kanit", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    margin-left: 2.5rem;
+    margin-top: 0.75rem;
+
+}
+
+/* Make sure Tailwind doesn't override our styles */
+.main h1, .main h2 {
+    font-weight: 700 !important;
+}

@@ -1,15 +1,15 @@
 .logo {
     width: 155px;
     height: 34px;
-    align-items: start;
+    align-items: center;
     margin: 15px;
 }
 
 nav {
     background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
     display: flex;
-    justify-content: flex-start;
-    align-items: start;
+    justify-content: flex-start; /* Start with logo on left */
+    align-items: center; /* Center items vertically */
     width: 100%;
     padding: 5px;
     margin: 0;
@@ -19,28 +19,60 @@ nav {
     left: 0;
 }
 
-
 nav a {
     text-decoration: none;
     color: white;
-    font-family: 'Kanit', bold;
-    font-size: 20px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
     margin: 0;
-    padding: 0;
+    padding: 8px 15px; /* Added padding for better clickability */
+    display: inline-block; /* Allow horizontal alignment */
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
 }
 
 nav li {
     text-decoration: none;
     margin: 0;
     padding: 0;
-    flex: 1; 
-    text-align:start;
+    text-align: center;
+    display: inline-block; /* Display list items inline */
 }
 
 nav ul {
-    display: flex; 
-    justify-content: space-between; 
-    list-style: none; 
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    list-style: none;
     padding: 0;
-    float: right;
+    margin: 0 0 0 20px; /* Add margin to the left of the menu (space after logo) */
+    align-items: center; /* Center items vertically */
+    height: 100%;
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        margin: 10px auto 5px 15px;
+    }
+    
+    nav ul {
+        justify-content: flex-start;
+        width: 100%;
+        margin: 5px 0 10px 15px;
+    }
+    
+    nav li {
+        margin: 0 5px;
+    }
+    
+    nav a {
+        padding: 5px 10px;
+        font-size: 16px;
+    }
 }
