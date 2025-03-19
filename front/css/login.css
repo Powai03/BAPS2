@@ -14,6 +14,12 @@ img {
     height: 34px;
 }
 
+.geeko {
+    width: 395.88px;
+    height: 954.47px;
+    transform: rotate(-50deg);
+}
+
 .logo {
     width: 155px;
     height: 34px;
@@ -26,16 +32,6 @@ img {
     justify-content: center;
     align-items: center;
     margin: 25px;
-}
-
-.navbar {
-    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
-    padding: 5px;
-    margin-bottom: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    left: 0;
-    right: 0;
 }
 
 .buttonco {

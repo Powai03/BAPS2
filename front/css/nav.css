@@ -1,0 +1,46 @@
+.logo {
+    width: 155px;
+    height: 34px;
+    align-items: start;
+    margin: 15px;
+}
+
+nav {
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Kanit', bold;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    flex: 1; 
+    text-align:start;
+}
+
+nav ul {
+    display: flex; 
+    justify-content: space-between; 
+    list-style: none; 
+    padding: 0;
+    float: right;
+}

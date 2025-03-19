@@ -28,12 +28,6 @@
     margin-left: auto;
 }
 
-.navbar {
-    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
-    padding: 5px;
-    margin-bottom: 20px;
-}
-
 .container {
     margin-top: 50px;
     display: flex;
