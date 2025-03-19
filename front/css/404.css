@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
 
-.topbar {
-    background-color: #204283;
-    border-bottom: 1px solid #204283;
-    width: auto;
-    height: 92px;
-    display: block; /* Ensure the element is displayed */
-}
-
 .content {
     display: flex;
     align-items: center;

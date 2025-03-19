@@ -10,10 +10,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Connexion</title>
 </head>
+<header>
+    <nav>
+        <img class="logo" src="./img/chaville-logo.png" alt="Logo">
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Présentation</a></li>
+            <li><a href="#">Vitrine</a></li>
+        </ul>
+    </nav>
+</header>
 <body class="flex flex-col min-h-screen">
-    <header class="w-full">
-        <img src="./img/chaville-logo.png" alt="Logo" class="logo">
-    </header>
     <main class="flex-grow">
         <div class="container">
             <form id="login-form" onsubmit="event.preventDefault(); logIn();">
