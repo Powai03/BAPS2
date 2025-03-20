@@ -39,6 +39,11 @@ li {
 
 }
 
+.main {
+    margin-top: 70px; 
+    padding: 20px;
+}
+
 /* Make sure Tailwind doesn't override our styles */
 .main h1, .main h2 {
     font-weight: 700 !important;

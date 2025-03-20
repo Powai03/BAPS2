@@ -19,6 +19,7 @@ header {
 
 main {
     margin-top: 0;
+    padding-top: 80px; /* Increased padding to account for fixed header height */
 }
 
 img {
@@ -62,11 +63,14 @@ img {
 
 .conxcard {
     border-radius: 30px;
+    margin-top: 40px;
     width: 425px;
     height: auto;
     justify-content: start;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative; /* Add position relative */
+    z-index: 10; /* Add z-index below the header but still visible */
 }
 
 .conxcard-body {
@@ -159,6 +163,10 @@ label {
         justify-content: center;
     }
 
+    main {
+        padding-top: 70px; /* Adjust for mobile as well */
+    }
+
     .conxcard {
         width: 100%;
         max-width: 425px;
@@ -190,4 +198,5 @@ label {
         width: 100%;
         max-width: 369px;
     }
+
 }
