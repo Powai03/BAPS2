@@ -3,52 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <title>Connexion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
-    
-    <div class="container">
-        <form id="login-form" onsubmit="event.preventDefault(); logIn();">
-            <div class="conxcard">
-                <h1 class="eptxt">Espace professionnel</h1>
-                <h1 class="conxtxt">Connexion</h1>
-                <div class="conxcard-body">
-                    <label for="email">E-mail</label>
-                    <div class="input-box">
-                        <input type="email" name="email" id="email" required>
+    <!-- Header - masqué sur mobile et tablette -->
+    <header class="hidden lg:block bg-gradient-to-r from-[#0D23D2] to-[#0022FF]">
+        <div class="p-2 flex justify-between items-center">
+            <div class="flex items-center space-x-8">
+                <a href="home.html">
+                    <img class="h-[40px] w-[200px]" src="img/Fichier_54x.png" alt="Logo"/>
+                </a>
+                <nav class="flex space-x-6 text-white">
+                    <a href="#actu" class="hover:text-white/80">Accueil</a>
+                    <a href="#presentation" class="hover:text-white/80">Présentation</a>
+                    <a href="#annuaire" class="hover:text-white/80">Vitrine</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div 
+        class="min-h-screen bg-cover bg-center bg-no-repeat flex"
+        style="background-image: url('img/Gradient.png')"
+    >
+        <!-- Conteneur du formulaire centré -->
+        <div class="flex-1 flex flex-col justify-center items-center p-4 sm:p-6 md:p-8">
+            <div class="w-full max-w-[420px] md:max-w-[480px] lg:max-w-[550px]">
+                <div class="bg-black/40 backdrop-blur-sm shadow-2xl rounded-2xl overflow-hidden">
+                    <!-- Bannière supérieure -->
+                    <div 
+                        class="border-b border-white/10"
+                        style="background: linear-gradient(to right, #0D23D2 0%, #0022FF 100%)"
+                    >
+                        <div class="px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-3 sm:gap-4">
+                            <a 
+                                href="home.html" 
+                                class="p-1.5 sm:p-2 hover:bg-white/10 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-6 h-6 sm:w-7 sm:h-7">
+                                    <path d="m15 18-6-6 6-6"/>
+                                </svg>
+                            </a>
+                            <span class="text-lg sm:text-xl font-semibold text-white">
+                                Espace professionel
+                            </span>
+                        </div>
                     </div>
-                    <label for="password">Mot de passe</label>
-                    <div class="input-box">
-                        <input type="password" name="password" id="password" required>
-                    </div>
-                    <div class="remember-forgot">
-                        <a class="mdpoubli" href="#">Mot de passe oublié ?</a>
-                    </div>
-                    <div class="button-container">
-                        <button type="submit" class="boutonco">Connexion</button>
-                    </div>
-                    <div class="signup">
-                        <a href="signup.html">Créer un compte</a>
+
+                    <!-- Corps du formulaire -->
+                    <div class="p-5 sm:p-6 md:p-8">
+                        <form id="login-form" class="space-y-5 sm:space-y-6">
+                            <h2 class="text-2xl sm:text-3xl font-bold text-white text-center mb-6 sm:mb-8">
+                                Connexion
+                            </h2>
+
+                            <div>
+                                <label for="email" class="block mb-1.5 sm:mb-2 text-sm sm:text-base font-medium text-white">
+                                    E-mail *
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="email"
+                                    name="email"
+                                    required
+                                    class="w-full px-4 sm:px-5 py-2.5 sm:py-3 border border-white/20 bg-white/10 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base transition-shadow placeholder-white/70"
+                                />
+                            </div>
+
+                            <div>
+                                <label for="password" class="block mb-1.5 sm:mb-2 text-sm sm:text-base font-medium text-white">
+                                    Mot de passe *
+                                </label>
+                                <input 
+                                    type="password" 
+                                    id="password"
+                                    name="password"
+                                    required
+                                    class="w-full px-4 sm:px-5 py-2.5 sm:py-3 border border-white/20 bg-white/10 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base transition-shadow"
+                                />
+                            </div>
+
+                            <div class="text-right">
+                                <a href="signup.html" class="text-sm sm:text-base text-white hover:text-white/80 transition-colors">
+                                    Mot de passe oublié ?
+                                </a>
+                            </div>
+
+                            <button
+                                type="submit"
+                                style="background: linear-gradient(to right, #0D23D2 0%, #0022FF 100%)"
+                                class="w-full px-5 sm:px-6 py-3 sm:py-4 rounded-lg text-white hover:opacity-90 active:opacity-100 transition-opacity font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl"
+                            >
+                                Connexion
+                            </button>
+
+                            <div class="text-center">
+                                <span class="text-white/90 text-sm sm:text-base">Vous n'avez pas de compte ?</span>
+                                <a href="signup.html" class="ml-1.5 sm:ml-2 text-white hover:text-white/80 transition-colors font-medium text-sm sm:text-base">
+                                    Créer un compte
+                                </a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </form>
-        
-        <div>
-            <h1 class="cptprofh">Vous n'avez pas un compte professionnel ?</h1>
-            <p class="cptprofp">
-                Blablablabla Blablablabla Blablablabla Blablablabla Blablablabla Blablablabla 
-                Blablablabla Blablablabla Blablablabla Blablablabla Blablablabla Blablablabla
-            </p>
-            <button type="button" class="boutoncr" onclick="window.location.href='signup.html'">
-                Créer un Compte
-            </button>
+
+            <!-- Logo en bas sur mobile et tablette -->
+            <div class="lg:hidden mt-8 flex flex-col items-center">
+                <img 
+                    src="img/chaville-logo.png"
+                    alt="Logo Chaville"
+                    class="h-20 w-auto max-w-full object-contain mb-4"
+                />
+            </div>
+        </div>
+
+        <!-- Image décorative à droite -->
+        <div class="hidden lg:block w-[45%]">
+            <img 
+                src="img/Lézard.png" 
+                alt="Espace de travail professionnel" 
+                class="w-full h-screen object-cover"
+            />
         </div>
     </div>
 
+    <!-- Footer - masqué sur mobile et tablette -->
+    <footer class="hidden lg:block bg-gradient-to-r from-[#0D23D2] to-[#0022FF] text-white">
+        <div class="p-6 flex justify-between items-center">
+            <div class="flex space-x-8">
+                <p>©2025 Ville de Chaville</p>
+                <a href="#" class="hover:text-white/80">License</a>
+                <a href="home.html" class="hover:text-white/80">Site Officiel</a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-white/80">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.7778 0H2.22222C1 0 0 1 0 2.22222V17.7778C0 19.0011 1 20 2.22222 20H10V12.2222H7.77778V9.47222H10V7.19444C10 4.79 11.3467 3.10111 14.1844 3.10111L16.1878 3.10333V5.99778H14.8578C13.7533 5.99778 13.3333 6.82667 13.3333 7.59556V9.47333H16.1867L15.5556 12.2222H13.3333V20H17.7778C19 20 20 19.0011 20 17.7778V2.22222C20 1 19 0 17.7778 0Z" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-white/80">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.99955 6.67143C8.15678 6.67143 6.67113 8.17143 6.67113 10C6.67113 11.8286 8.17106 13.3286 9.99955 13.3286C11.828 13.3286 13.328 11.8286 13.328 10C13.328 8.17143 11.828 6.67143 9.99955 6.67143ZM19.9991 10C19.9991 8.61429 19.9991 7.25714 19.9277 5.87143C19.8563 4.27143 19.4848 2.84286 18.3135 1.68571C17.1421 0.514286 15.7279 0.142857 14.1279 0.0714285C12.7423 -6.70552e-08 11.3852 0 9.99955 0C8.6139 0 7.25682 -6.70552e-08 5.87117 0.0714285C4.27124 0.142857 2.84273 0.514286 1.68564 1.68571C0.514263 2.85714 0.142851 4.27143 0.0714253 5.87143C-6.70552e-08 7.25714 0 8.61429 0 10C0 11.3857 -6.70552e-08 12.7429 0.0714253 14.1286C0.142851 15.7286 0.514263 17.1571 1.68564 18.3143C2.85702 19.4857 4.27124 19.8571 5.87117 19.9286C7.25682 20 8.6139 20 9.99955 20C11.3852 20 12.7423 20 14.1279 19.9286C15.7279 19.8571 17.1564 19.4857 18.3135 18.3143C19.4848 17.1429 19.8563 15.7286 19.9277 14.1286C20.0134 12.7571 19.9991 11.3857 19.9991 10ZM9.99955 15.1286C7.15682 15.1286 4.87121 12.8429 4.87121 10C4.87121 7.15714 7.15682 4.87143 9.99955 4.87143C12.8423 4.87143 15.1279 7.15714 15.1279 10C15.1279 12.8429 12.8423 15.1286 9.99955 15.1286ZM15.3422 5.85714C14.6851 5.85714 14.1422 5.32857 14.1422 4.65714C14.1422 3.98571 14.6708 3.45714 15.3422 3.45714C16.0136 3.45714 16.5421 3.98571 16.5421 4.65714C16.5457 4.81362 16.5172 4.96918 16.4582 5.11416C16.3992 5.25915 16.3111 5.39048 16.1993 5.5C16.0898 5.61182 15.9584 5.69995 15.8135 5.75893C15.6685 5.81791 15.5129 5.84647 15.3565 5.84286L15.3422 5.85714Z" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-white/80">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.7778 0C18.3671 0 18.9324 0.234126 19.3491 0.650874C19.7659 1.06762 20 1.63285 20 2.22222V17.7778C20 18.3671 19.7659 18.9324 19.3491 19.3491C18.9324 19.7659 18.3671 20 17.7778 20H2.22222C1.63285 20 1.06762 19.7659 0.650874 19.3491C0.234126 18.9324 0 18.3671 0 17.7778V2.22222C0 1.63285 0.234126 1.06762 0.650874 0.650874C1.06762 0.234126 1.63285 0 2.22222 0H17.7778ZM17.2222 17.2222V11.3333C17.2222 10.3727 16.8406 9.45133 16.1613 8.77204C15.482 8.09274 14.5607 7.71111 13.6 7.71111C12.6556 7.71111 11.5556 8.28889 11.0222 9.15556V7.92222H7.92222V17.2222H11.0222V11.7444C11.0222 10.8889 11.7111 10.1889 12.5667 10.1889C12.9792 10.1889 13.3749 10.3528 13.6666 10.6445C13.9583 10.9362 14.1222 11.3319 14.1222 11.7444V17.2222H17.2222ZM4.31111 6.17778C4.80618 6.17778 5.28098 5.98111 5.63104 5.63104C5.98111 5.28098 6.17778 4.80618 6.17778 4.31111C6.17778 3.27778 5.34444 2.43333 4.31111 2.43333C3.81309 2.43333 3.33547 2.63117 2.98332 2.98332C2.63117 3.33547 2.43333 3.81309 2.43333 4.31111C2.43333 5.34444 3.27778 6.17778 4.31111 6.17778ZM5.85556 17.2222V7.92222H2.77778V17.2222H5.85556Z" fill="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Form submitted');
+            // Ajoutez ici la logique de connexion
+        });
+    </script>
+
     <script src="./js/login.js"></script>
+
 </body>
 </html>
