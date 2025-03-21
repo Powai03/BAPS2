@@ -14,16 +14,35 @@
 <body>
     <header>
         <nav>
-            <img class="logo" src="./img/chaville-logo.png" alt="Logo">
+            <img class="logo" src="./img/chaville-logo.png" alt="chaville-logo">
             <ul>
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#">Présentation</a></li>
                 <li><a href="#">Vitrine</a></li>
+                <li><img class="geeko" src="./img/geeko.svg" alt="geeko"></li>
             </ul>
-            <button class="btn">
-                <i class="fas fa-user">Espace Professionnel</i>
-            </button>
+
+            <!-- Geeko logo for mobile -->
+            <div class="geeko-mobile-container">
+                <img class="geeko-mobile" src="./img/geeko.svg" alt="geeko-mobile">
+            </div>
+            <!-- Hamburger menu button for mobile -->
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
+
+        <!-- Dropdown menu for mobile -->
+        <div class="dropdown-menu" id="dropdown-menu">
+            <a href="./home.html">Accueil</a>
+            <a href="#">Présentation</a>
+            <a href="#">Vitrine</a>
+            <button class="btn flex items-center">
+                <i class="fas fa-user mr-3"></i>Espace Professionnel
+            </button>
+        </div>
     </header>
     <main class="main">
         <!-- Your page content here -->
@@ -71,5 +90,6 @@
     <footer>
         <p>© 2025 Ville de Chaville</p>
     </footer>
+    <script src="./js/mobile-nav.js"></script>
 </body>
 </html>
