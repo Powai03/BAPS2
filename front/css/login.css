@@ -34,6 +34,13 @@ img {
     margin: 15px;
 }
 
+.geeko2 {
+    transform: rotate(-24.19deg);
+    width: 395.88px;
+    height: 954.47px;
+    filter: invert(1);
+}
+
 .button-container {
     display: flex;
     justify-content: center;
@@ -167,19 +174,30 @@ label {
         padding-top: 70px; /* Adjust for mobile as well */
     }
 
+    .epcontainer {
+        margin-bottom: 20px; /* Reduce margin for smaller screens */
+        padding: 10px 15px; /* Adjust padding for smaller screens */
+    }
+
     .conxcard {
         width: 100%;
         max-width: 425px;
     }
 
+    
+
     .conxcard-body {
         width: 100%;
+        height: auto;
+        padding-bottom: 40px; /* Reduce padding for smaller screens */
+        box-sizing: border-box;
     }
 
     .eptxt {
         width: 100%;
         margin: 0;
         box-sizing: border-box;
+        align-items: flex-end;
     }
 
     .input-box {
@@ -192,11 +210,12 @@ label {
 
     .button-container {
         margin: 20px 0;
+        position: relative;
     }
 
     .buttonco {
         width: 100%;
         max-width: 369px;
+        margin-top: 30px; /* More consistent top margin */
     }
-
 }

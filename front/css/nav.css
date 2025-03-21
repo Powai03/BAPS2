@@ -7,9 +7,8 @@
 
 .geeko {
     transform: rotate(-90deg);
-    width: 75px;
-    height: 75px;
-    /* change color of the geeko */
+    width: 80px;
+    height: 80px;
     filter: invert(1);
 }
 
@@ -25,6 +24,7 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1000;
 }
 
 .btn {
@@ -77,28 +77,143 @@ nav ul {
     height: 100%;
 }
 
+/* Hamburger menu styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: auto; /* Changed from margin-left: auto to margin-right: auto to align left */
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* Animation for hamburger menu */
+.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    display: none;
+    position: fixed;
+    top: 54px; /* Height of the nav bar */
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    flex-direction: column;
+    z-index: 999;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    max-height: calc(100vh - 54px); /* Set max height to viewport minus nav height */
+    overflow-y: auto; /* Add scrolling for overflow */
+}
+
+.dropdown-menu a {
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 25px 25px; /* Increased horizontal padding */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: visible; /* Ensure text isn't cut off */
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Geeko logo styles */
+.geeko-mobile-container {
+    display: none;
+}
+
+.geeko-mobile {
+    transform: rotate(-90deg);
+    width: 75px;
+    height: 75px;
+    filter: invert(1);
+}
+
+@media (max-width: 768px) {
+    .geeko-mobile-container {
+        display: block;
+    }
+}
+
+.show-menu {
+    display: flex;
+}
+
 /* For mobile screens */
 @media (max-width: 768px) {
     nav {
-        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 5px 15px;
+    }
+    
+    /* Fix for dropdown menu positioning */
+    .dropdown-menu {
+        padding-top: 15px;
     }
     
     .logo {
-        margin: 10px auto 5px 15px;
+        display: none; /* Hide Chaville logo on mobile */
     }
     
     nav ul {
-        justify-content: flex-start;
-        width: 100%;
-        margin: 5px 0 10px 15px;
+        display: none;
     }
     
-    nav li {
-        margin: 0 5px;
+    .hamburger {
+        display: flex;
+        margin-right: auto; /* Keep it on the left */
+        margin-left: 0; /* Ensure no left margin pushes it away from the edge */
+        order: 1; /* Ensure it appears first */
     }
     
-    nav a {
-        padding: 5px 10px;
+    .geeko {
+        display: none; /* Hide in top nav on mobile */
+    }
+    
+    .btn {
+        display: none; /* Hide button in top nav on mobile */
+    }
+    
+    /* Position the Geeko logo to the right */
+    .geeko-mobile-container {
+        display: flex;
+        margin-left: auto; /* Push to the right */
+        order: 2; /* Ensure it appears second */
+    }
+    
+    /* Add button to dropdown menu on mobile */
+    .dropdown-menu .btn-mobile {
+        background-color: #ffffff;
+        color: rgb(46, 17, 209);
+        font-family: 'Kanit';
+        font-weight: normal;
         font-size: 16px;
+        text-align: center;
+        margin: 15px 20px;
+        padding: 8px 15px;
+        border-radius: 100px;
     }
 }
