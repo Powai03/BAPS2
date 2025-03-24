@@ -3,10 +3,13 @@
 <head>
     <meta charset="utf-8">
     <title>404 - Page introuvable</title>
+
     <link rel="stylesheet" href="css/404.css">
     <link rel="stylesheet" href="css/nav.css">
+    <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">        
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -18,7 +21,9 @@
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#">Présentation</a></li>
                 <li><a href="#">Vitrine</a></li>
-                <li><img class="geeko" src="./img/geeko.svg" alt="geeko"></li>
+                <li><button class="btn flex items-center">
+                    <i class="fas fa-user mr-3"></i>Espace Professionnel
+                </button></li>
             </ul>
 
             <!-- Geeko logo for mobile -->
@@ -45,13 +50,13 @@
     </header>
     
     <div class="error-container">
-        <div class="error-content">
-            <div class="error-number">404</div>
+        <div class="error-number">404</div>
+        <div class="error-text-container">
+            <h2 class="error-title">Oups... Cette page est introuvable !</h2>
             <div class="error-text">
-                <h2>Oups... Cette page est introuvable !</h2>
                 <p>Pas de panique, vous êtes toujours sur le bon site. Peut-être que le lien
                 est incorrect ou que la page a été déplacée.</p>
-                        
+                
                 <p>Vous pouvez essayer de rafraîchir la page ou vérifier l'URL. Sinon,
                 retournez à l'accueil ou utilisez la barre de recherche.</p>
             
