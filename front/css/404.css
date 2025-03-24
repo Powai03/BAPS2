@@ -1,51 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
 
-.content {
+.error-container {
     display: flex;
-    align-items: center;
+    flex-wrap: nowrap;
+    padding: 20px 25px;
+    margin-top: 50px;
+    align-items: flex-start;
 }
 
-h1 {
-    padding-top: 50px;
-    padding-left: 25px;
-    font-size: 128px;
+.error-number {
+    font-size: 200px;
     font-weight: bold;
-    font-family: 'Kanit';
-    background: linear-gradient(44deg, #0D23D2, #0022FF 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-p {
-    padding-top: 25px;
-    padding-left: 25px;
-    font-size: 24px;
-    font-family: 'Kanit';
-    font-weight: bold;
-}
-
-.error {
+    font-family: 'Kanit', sans-serif;
+    color: #0022FF;
     margin-right: 20px;
-    font-size: 128px;
-    font-weight: bold;
-    font-family: 'Kanit';
+    line-height: 0.8;
 }
 
-h2 {
+.error-text-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.error-title {
     font-size: 24px;
     font-weight: bold;
-    font-family: 'Kanit';
-    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-family: 'Kanit', sans-serif;
+    color: #0022FF;
+    margin-bottom: 15px;
 }
 
-p {
-    margin-left: 20px;
+.error-text p {
     font-size: 16px;
-    font-family: 'Kanit';
+    font-family: 'Kanit', sans-serif;
+    margin-bottom: 15px;
+    line-height: 1.4;
 }
 
 footer {
@@ -53,7 +43,7 @@ footer {
     border-top: 1px solid #204283;
     width: auto;
     height: 52px;
-    display: block; /* Ensure the element is displayed */
+    display: block;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -64,6 +54,50 @@ footer {
     color: #fff;
     font-size: 0.8rem;
     padding-left: 50px;
-    font-family: 'Kanit';
-    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    font-family: 'Kanit', sans-serif;
+    margin-top: 15px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .error-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 70px;
+    }
+    
+    .error-number {
+        font-size: 128px;
+        margin-right: 0;
+        margin-bottom: 0;
+        padding-top: 70px;
+    }
+    
+    .error-text-container {
+        align-items: center;
+        text-align: center;
+        padding-top: 0;
+    }
+    
+    .error-title {
+        font-size: 18px;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .error-text p {
+        font-size: 16px;
+        text-align: center;
+        padding: 0 10px;
+    }
+    
+    footer {
+        height: 25px;
+    }
+    
+    .footer p {
+        font-size: 0.6rem;
+    }
 }
