@@ -124,12 +124,14 @@ nav ul li:last-child {
     top: 54px; /* Height of the nav bar */
     left: 0;
     width: 100%;
-    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);/* Solid blue background like in screenshot */
     flex-direction: column;
     z-index: 999;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     max-height: calc(100vh - 54px); /* Set max height to viewport minus nav height */
     overflow-y: auto; /* Add scrolling for overflow */
+    text-align: center; /* Center all content */
+    padding: 20px 0; /* Add vertical padding */
 }
 
 .dropdown-menu a {
@@ -137,15 +139,38 @@ nav ul li:last-child {
     font-family: 'Kanit', sans-serif;
     text-decoration: none;
     font-size: 18px;
-    padding: 25px 25px; /* Increased horizontal padding */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 0; /* Vertical padding only */
+    margin: 0;
     transition: background-color 0.3s;
     white-space: nowrap; /* Prevent text wrapping */
     overflow: visible; /* Ensure text isn't cut off */
+    display: block; /* Make links block to center them */
+    width: 100%;
+    text-align: center;
+    border-bottom: none; /* Remove border */
 }
 
 .dropdown-menu a:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Centered button in dropdown menu with more space */
+.dropdown-menu .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto; /* Center the button and add space above and below */
+    width: auto; /* Width auto to fit content */
+    max-width: 220px; /* Set a maximum width */
+    padding: 8px 20px; /* Padding similar to screenshot */
+    height: 38px; /* Fixed height like in screenshot */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Icon in button */
+.dropdown-menu .btn i {
+    margin-right: 10px; /* Space between icon and text */
 }
 
 /* Mobile Geeko logo styles */
@@ -177,9 +202,16 @@ nav ul li:last-child {
         padding: 5px 15px;
     }
     
-    /* Fix for dropdown menu positioning */
+    /* Dropdown menu styling to match screenshot */
     .dropdown-menu {
-        padding-top: 15px;
+        padding: 30px 0; /* Match spacing in screenshot */
+        display: none; /* Hidden by default */
+    }
+    
+    /* When menu is shown */
+    .dropdown-menu.show-menu {
+        display: flex;
+        align-items: center; /* Center items horizontally */
     }
     
     .logo {
@@ -201,7 +233,7 @@ nav ul li:last-child {
         display: none; /* Hide in top nav on mobile */
     }
     
-    .btn {
+    nav .btn {
         display: none; /* Hide button in top nav on mobile */
     }
     
@@ -210,18 +242,5 @@ nav ul li:last-child {
         display: flex;
         margin-left: auto; /* Push to the right */
         order: 2; /* Ensure it appears second */
-    }
-    
-    /* Add button to dropdown menu on mobile */
-    .dropdown-menu .btn-mobile {
-        background-color: #ffffff;
-        color: rgb(46, 17, 209);
-        font-family: 'Kanit';
-        font-weight: normal;
-        font-size: 16px;
-        text-align: center;
-        margin: 15px 20px;
-        padding: 8px 15px;
-        border-radius: 100px;
     }
 }
