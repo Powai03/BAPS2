@@ -239,6 +239,35 @@ const rejectModification = async (req, res) => {
     }
 };
 
-export { getUser, updateUser , getUsersByEtatCreation, validateUser, deleteUser, getModifications, validateModification, rejectModification };
+const getAllEntreprisesWithImages = async (req, res) => {
+    try {
+        const entreprises = await prisma.utilisateur.findMany({
+            where: { etatCreation: true, role: { in: ["ENTREPRISE", "AUTO_ENTREPRENEUR", "ADMIN"] } },
+            select: {
+                id: true,
+                nomEntreprise: true,
+                nom: true,
+                prenom: true,
+                email: true,
+                telephone: true,
+                adresse: true,
+                logo: true,
+                siteWeb: true,
+                description: true,
+                profession: true,
+                domaineActivite: true,
+                images: { select: { url: true } }, // Récupérer toutes les images associées
+            },
+        });
+
+        res.json(entreprises);
+    } catch (error) {
+        console.error("❌ Erreur lors de la récupération des entreprises :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+};
+
+
+export { getAllEntreprisesWithImages, getUser, updateUser , getUsersByEtatCreation, validateUser, deleteUser, getModifications, validateModification, rejectModification };
 
 

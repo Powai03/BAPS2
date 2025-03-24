@@ -8,65 +8,68 @@ datasource db {
 }
 
 model Utilisateur {
-  id                 String  @id @default(uuid()) 
-  nom                String?  // Facultatif pour les entreprises
-  prenom             String?  // Facultatif pour les entreprises
-  nomEntreprise      String?  // Facultatif pour les micro-entreprises
-  email              String  @unique
-  password           String  
-  numero             String?
-  telephone          String?
-  adresse            String  @default("Inconnu")
-  complementAdresse  String?
-  codePostal         String  @default("00000")
-  profession         String  @default("Inconnu")
-  domaineActivite    String  @default("Inconnu")
-  description        String? @db.Text
-  siteWeb            String?
-  logo               String?
-  justificatif       String?  // Lien du fichier Cesu/Siren
-  pieceIdentite      String?  // Lien du fichier de la pièce d'identité
-  role               RoleUtilisateur
-  etatCreation       Boolean @default(false)
-  etatModification   Boolean @default(false)
-  etatJustificatif   Boolean @default(false)
-  typeCompte         String  @default("auto-entrepreneur")
-  typeInscription    String  @default("CESU")
-  modifications      Modification[]
-  images             Image[]
+  id                String          @id @default(uuid())
+  nom               String?
+  email             String          @unique
+  password          String
+  numero            String?
+  telephone         String?
+  description       String?         @db.VarChar(400)
+  adresse           String          @default("Inconnu")
+  siteWeb           String?
+  role              RoleUtilisateur
+  logo              String?
+  nomEntreprise     String?
+  prenom            String?
+  etatCreation      Boolean         @default(false)
+  etatModification  Boolean         @default(false)
+  codePostal        String          @default("00000")
+  complementAdresse String?
+  domaineActivite   String          @default("Inconnu")
+  justificatif      String?
+  pieceIdentite     String?
+  profession        String          @default("Inconnu")
+  typeCompte        String          @default("auto-entrepreneur")
+  typeInscription   String          @default("CESU")
+  etatJustificatif  Boolean         @default(false)
+  images            Image[]
+  modifications     Modification[]
 }
 
-// 📌 Enum pour les rôles des utilisateurs
+model Modification {
+  id                String      @id @default(uuid())
+  utilisateurId     String
+  nom               String?
+  prenom            String?
+  nomEntreprise     String?
+  email             String?
+  password          String?
+  telephone         String?
+  adresse           String?
+  complementAdresse String?
+  codePostal        String?
+  etatValidation    Boolean     @default(false)
+  createdAt         DateTime    @default(now())
+  siteWeb           String?
+  description       String?     @db.Text
+  utilisateur       Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+
+  @@index([utilisateurId], map: "Modification_utilisateurId_fkey")
+}
+
+model Image {
+  id            String      @id @default(uuid())
+  utilisateurId String
+  url           String
+  type          String
+  createdAt     DateTime    @default(now())
+  utilisateur   Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+
+  @@index([utilisateurId], map: "Image_utilisateurId_fkey")
+}
+
 enum RoleUtilisateur {
   AUTO_ENTREPRENEUR
   ENTREPRISE
   ADMIN
-}
-
-model Modification {
-  id               String   @id @default(uuid())
-  utilisateurId    String   
-  utilisateur      Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
-  nom             String?
-  prenom          String?
-  nomEntreprise   String?
-  email           String?
-  description    String?  @db.Text
-  password        String?
-  telephone       String?
-  adresse         String?
-  complementAdresse String?
-  codePostal      String?
-  siteWeb         String?
-  etatValidation  Boolean  @default(false) // false = en attente, true = validé
-  createdAt       DateTime @default(now())
-}
-
-model Image {
-  id            String   @id @default(uuid())  
-  utilisateurId String   
-  utilisateur   Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
-  url           String   // Lien de l'image
-  type          String   // Exemple : "profil", "justificatif", etc.
-  createdAt     DateTime @default(now())
 }

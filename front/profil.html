@@ -9,24 +9,29 @@
 </head>
 
 <body class="bg-gray-100 p-10 flex justify-center items-center min-h-screen">
-    <div class="container flex mx-auto px-4 py-8">
+    
+    <div class="container flex mx-auto px-4 py-8 ">
         <div class="boutoncontainer flex flex-col">
             <button id="compte" class="bg-blue-500 text-white px-4 py-2 rounded">Mon compte</button>
-            <button id="gestion" class="bg-blue-500 text-white px-4 py-2 rounded">Gestion du compte</button>
+            <button id="gestion" class="bg-blue-500 text-white px-4 py-2 rounded">Informations</button>
             <button id="vitrine" class="bg-blue-500 text-white px-4 py-2 rounded">Ma vitrine</button>
             <button id="justificatif" class="bg-blue-500 text-white px-4 py-2 rounded">Mes documents</button>
             <button id="admin" class="bg-blue-500 text-white px-4 py-2 rounded">Admin</button>
         </div>
         <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl">
+            <a href="home.html" class="text-blue-500">Retour à l'accueil</a>
             <h1 class="text-2xl font-bold text-center mb-4">Mon Profil</h1>
 
             <!-- 📌 Section Profil (Affichage) -->
             <div id="profileView">
                 <div id="profilContainer">
-                    <!-- Pour une MICROENTREPRISE -->
+                    
                     <div id="auto-entrepreneur-info" class="">
+                        <!-- Pour une AUTOENTREPRISE -->
                         <p> <span id="nom"></span></p>
                         <p> <span id="prenom"></span></p>
+                            <!-- Pour une ENTREPRISE -->
+                        <p> <span id="nomEntreprise"></span></p>
                         <div class="logoentreprise w-24 h-24 rounded-full mt-4"></div>
                         <p><strong>Email :</strong> <span id="email"></span></p>
                         <p><strong>Téléphone :</strong> <span id="telephone"></span></p>
@@ -34,23 +39,10 @@
                         <p><strong>Site Web :</strong> <span id="siteWeb"></span></p>
                         <p><strong>Domaine d'activité :</strong> <span id="domaineActivite"></span></p>
                         <p><strong>Profession :</strong> <span id="profession"></span></p>
-                        <p><strong>CESU :</strong> <span id="numero"></span></p>
+                        <p><strong>SIREN/CESU :</strong> <span id="numero"></span></p>
                         <p><strong>Description :</strong> <span id="description"></span></p>
                     </div>
-                    <!-- Pour une ENTREPRISE -->
-                    <div id="entreprise-info" class="hidden">
-                        <h2 class="text-xl font-semibold mt-4">Informations Entreprise</h2>
-                        <p> <span id="nomEntreprise"></span></p>
-                        <div class="logoentreprise w-12 h-12 rounded-full mt-4"></div>
-                        <p><strong>Email :</strong> <span id="email"></span></p>
-                        <p><strong>Téléphone :</strong> <span id="telephone"></span></p>
-                        <p><strong>Adresse :</strong> <span id="adresse"></span></p>
-                        <p><strong>Site Web :</strong> <span id="siteWeb"></span></p>
-                        <p><strong>Domaine d'activité :</strong> <span id="domaineActivite"></span></p>
-                        <p><strong>Profession :</strong> <span id="profession"></span></p>
-                        <p><strong>SIREN :</strong> <span id="numero"></span></p>
-                        <p><strong>Description :</strong> <span id="description"></span></p>
-                    </div>
+                    
                 </div>
                 <!-- 📌 Section Formulaire (Modification) -->
                 <div id="gestionContainer" class="">

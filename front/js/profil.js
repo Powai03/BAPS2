@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }
 
         // Sélection des éléments HTML
-        const entrepriseSection = document.getElementById("entreprise-info");
         const displayImages = document.getElementById("displayImages"); // Ajout de la div pour afficher les images
 
         // Champs personnels
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const description = document.getElementById("description");
 
         // Champs entreprise
-        const nomCommerce = document.getElementById("nom_commerce");
+        const nomCommerce = document.getElementById("nomEntreprise");
 
         // Affichage des données générales
         email.textContent = user.email || "Non renseigné";
@@ -69,7 +68,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         ).innerHTML = `<img src="${user.justificatif}" alt="Justificatif SIEN/CESU">`; //mettre le tailwind ici
         // Gestion spécifique selon le rôle
         if (user.role === "ENTREPRISE") {
-            entrepriseSection.classList.remove("hidden"); // Afficher le bloc entreprise
             nomCommerce.textContent = user.nomEntreprise || "Non renseigné";
 
             // Cacher Nom & Prénom (pas nécessaire pour une entreprise)

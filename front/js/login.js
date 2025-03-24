@@ -21,5 +21,11 @@ const logIn = async () => {
     localStorage.setItem('email', email);
     localStorage.setItem('etatCreation', data.etatCreation);
     
-    window.location.href = 'home.html';
+    if(response.ok) {
+        alert("Connexion réussie !");
+        window.location.href = 'home.html';
+    }
+    else {
+        alert(data.message || "Une erreur est survenue.");
+    }
 }
