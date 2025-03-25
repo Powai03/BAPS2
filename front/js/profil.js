@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const siteWeb = document.getElementById("siteWeb");
         const domaineActivite = document.getElementById("domaineActivite");
         const profession = document.getElementById("profession");
-        const numero = document.getElementById("numero");
         const description = document.getElementById("description");
 
         // Champs entreprise
@@ -54,7 +53,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         siteWeb.textContent = user.siteWeb || "Non renseigné";
         domaineActivite.textContent = user.domaineActivite || "Non renseigné";
         profession.textContent = user.profession || "Non renseigné";
-        numero.textContent = user.numero || "Non renseigné";
         description.textContent = user.description || "Non renseigné";
 
         document.querySelector(
@@ -67,13 +65,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             "numeroImage"
         ).innerHTML = `<img src="${user.justificatif}" alt="Justificatif SIEN/CESU">`; //mettre le tailwind ici
         // Gestion spécifique selon le rôle
-        if (user.role === "ENTREPRISE") {
+        if (user.role === "ENTREPRISE" || user.role === "ADMIN") {
             nomCommerce.textContent = user.nomEntreprise || "Non renseigné";
 
             // Cacher Nom & Prénom (pas nécessaire pour une entreprise)
             nom.parentElement.classList.add("hidden");
             prenom.parentElement.classList.add("hidden");
-        } else {
+        } else if (user.role === "AUTO_ENTREPRENEUR") {
             // Pour les microentreprises, afficher Nom & Prénom
             nom.textContent = user.nom || "Non renseigné";
             prenom.textContent = user.prenom || "Non renseigné";
@@ -184,20 +182,39 @@ const fetchUsers = async (etatCreation, containerClass) => {
             userDiv.classList.add("user-card");
 
             userDiv.innerHTML = `
-                <p><strong>Nom :</strong> ${user.nomEntreprise || `${user.nom} ${user.prenom}`}</p>
-                <p><strong>SIREN/CESU :</strong> ${user.numero || "Non renseigné"}</p>
-                <p><strong>Email :</strong> ${user.email}</p>
-                <p><strong>Rôle :</strong> ${user.role}</p>
-                <p><strong>Documents :</strong> 
-                    ${user.justificatif ? `<a href="${user.justificatif}" target="_blank" class="text-blue-500 underline">Justificatif</a>` : "Non renseigné"} 
-                    ${user.pieceIdentite ? `<a href="${user.pieceIdentite}" target="_blank" class="text-blue-500 underline">Pièce d'identité</a>` : "Non renseigné"}
-                </p>
-                <div class="actions">
-                    ${etatCreation ? "" // Si l'utilisateur est déjà validé, pas de boutons
-                            : `<button class="validate-btn" data-id="${user.id}">✅ Valider</button>
-                            <button class="delete-btn" data-id="${user.id}">❌ Supprimer</button>`
-                    }
-                </div>
+                <table class="text-white">
+                    <tr>
+                        <td><strong>Nom :</strong></td>
+                        <td>${user.nomEntreprise || `${user.nom} ${user.prenom}`}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SIREN/CESU :</strong></td>
+                        <td>${user.numero || "Non renseigné"}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email :</strong></td>
+                        <td>${user.email}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rôle :</strong></td>
+                        <td>${user.role}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Documents :</strong></td>
+                        <td>
+                            ${user.justificatif ? `<a href="${user.justificatif}" target="_blank" class="text-white underline">Justificatif</a>` : "Non renseigné"} 
+                            ${user.pieceIdentite ? `<a href="${user.pieceIdentite}" target="_blank" class="text-white underline">Pièce d'identité</a>` : "Non renseigné"}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="actions">
+                            ${etatCreation ? "" // Si l'utilisateur est déjà validé, pas de boutons
+                                : `<button class="validate-btn text-white" data-id="${user.id}">✅ Valider</button>
+                                   <button class="delete-btn text-white" data-id="${user.id}">❌ Supprimer</button>`
+                            }
+                        </td>
+                    </tr>
+                </table>
             `;
 
             container.appendChild(userDiv);
@@ -287,45 +304,45 @@ const fetchModifications = async () => {
             modifDiv.classList.add("modification-card");
 
             modifDiv.innerHTML = `
-                <p><strong>Utilisateur :</strong> ${modif.utilisateur.nom} ${
+                <p class="text-white"><strong>Utilisateur :</strong> ${modif.utilisateur.nom} ${
                 modif.utilisateur.prenom
             } (${modif.utilisateur.email})</p>
-                <p><strong>Nouvelles données :</strong></p>
+                <p class="text-white"><strong>Nouvelles données :</strong></p>
                 <ul>
-                    ${modif.nom ? `<li>Nom : ${modif.nom}</li>` : ""}
-                    ${modif.prenom ? `<li>Prénom : ${modif.prenom}</li>` : ""}
+                    ${modif.nom ? `<li class="text-white">Nom : ${modif.nom}</li>` : ""}
+                    ${modif.prenom ? `<li class="text-white">Prénom : ${modif.prenom}</li>` : ""}
                     ${
                         modif.nomEntreprise
-                            ? `<li>Entreprise : ${modif.nomEntreprise}</li>`
+                            ? `<li class="text-white">Entreprise : ${modif.nomEntreprise}</li>`
                             : ""
                     }
-                    ${modif.email ? `<li>Email : ${modif.email}</li>` : ""}
+                    ${modif.email ? `<li class="text-white">Email : ${modif.email}</li>` : ""}
                     ${
                         modif.telephone
-                            ? `<li>Téléphone : ${modif.telephone}</li>`
+                            ? `<li class="text-white">Téléphone : ${modif.telephone}</li>`
                             : ""
                     }
                     ${
                         modif.adresse
-                            ? `<li>Adresse : ${modif.adresse}</li>`
+                            ? `<li class="text-white">Adresse : ${modif.adresse}</li>`
                             : ""
                     }
                     ${
                         modif.siteWeb
-                            ? `<li>Site Web : ${modif.siteWeb}</li>`
+                            ? `<li class="text-white">Site Web : ${modif.siteWeb}</li>`
                             : ""
                     }
                     ${
                         modif.description
-                            ? `<li>Description : ${modif.description}</li>`
+                            ? `<li class="text-white">Description : ${modif.description}</li>`
                             : ""
                     }
                 </ul>
                 <div class="actions">
-                    <button class="validate-modif-btn" data-id="${
+                    <button class="validate-modif-btn text-white" data-id="${
                         modif.id
                     }">✅ Valider</button>
-                    <button class="reject-modif-btn" data-id="${
+                    <button class="reject-modif-btn text-white" data-id="${
                         modif.id
                     }">❌ Refuser</button>
                 </div>
