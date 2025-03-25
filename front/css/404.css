@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
+/* Error page layout */
+.error-container {
+    padding: 0 25px;
+    margin-top: 50px;
+}
+
+.error-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.error-number {
+    font-size: 160px;
+    font-weight: bold;
+    font-family: 'Kanit';
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding-top: 50px;
+    line-height: 0.8;
+}
+
+.error-title {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Kanit';
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.error-text {
+    padding-top: 30px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Kanit';
+    background: linear-gradient(90deg, #0D23D2 44%, #0022FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+    line-height: 1.4;
+    margin: 0;
+    white-space: normal;
+    width: 100%;
+    display: flex;
+}
+
+footer {
+    background-color: #204283;
+    border-top: 1px solid #204283;
+    width: auto;
+    height: 52px;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.footer p {
+    color: #fff;
+    font-size: 0.8rem;
+    padding-left: 50px;
+    font-family: 'Kanit';
+    margin-top: 15px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .error-container {
+        margin-top: 70px;
+    }
+    
+    .error-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .error-number {
+        font-size: 128px;
+        margin-right: 0;
+        margin-bottom: 0;
+        padding-top: 40px;
+        padding-bottom: 20px;
+        text-align: center;
+    }
+    
+    .error-text {
+        padding-top: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    h2 {
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+    }
+    
+    p {
+        font-size: 16px;
+        text-align: center;
+        padding-left: 0;
+        margin-left: 0;
+    }
+    
+    footer {
+        height: 25px;
+    }
+    
+    .footer p {
+        font-size: 0.6rem;
+    }
+}

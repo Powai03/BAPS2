@@ -179,7 +179,7 @@ const fetchUsers = async (etatCreation, containerClass) => {
 
         users.forEach((user) => {
             const userDiv = document.createElement("div");
-            userDiv.classList.add("user-card");
+            userDiv.classList.add("user-card", "mb-2");
 
             userDiv.innerHTML = `
                 <table class="text-white">
